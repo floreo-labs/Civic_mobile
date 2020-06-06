@@ -1,8 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar" >
+
+    </style>
+    
+    <style name="Widget.Toolbar" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="android:elevation">@dimen/z_app_bar</item>
+    </style>
+    
+    <style name="Widget.BottomNav" parent="@style/Widget.Design.BottomNavigationView">
     </style>
 
 </resources>
