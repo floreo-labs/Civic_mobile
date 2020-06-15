@@ -1,4 +1,4 @@
-package com.civic.feed
+package com.civic.home
 
 import android.app.Activity
 import android.content.Intent
@@ -16,17 +16,17 @@ import com.civic.common.android.extensions.setAllGone
 import com.civic.common.android.extensions.setAllVisible
 import com.civic.extensions.exhaust
 import com.civic.delegate.ComponentDelegate
-import com.civic.feed.arch.FeedModel
-import com.civic.feed.arch.FeedState
+import com.civic.home.arch.HomeModel
+import com.civic.home.arch.HomeState
 import com.civic.location.DeviceLocation
 import android.Manifest
 import android.widget.Toast
 
-class FeedFragmentDelegate(
-    private val feedPermissions: FeedPermissions,
+class HomeFragmentDelegate(
+    private val homePermissions: HomePermissions,
     private val fragment: Fragment,
     private val lifecycle: Lifecycle,
-    private val feedModel: FeedModel
+    private val homeModel: HomeModel
 ) : ComponentDelegate(), DefaultLifecycleObserver {
 
     private val viewStateEmptyGroup by register<Group>(R.id.fragment_feed_empty_group)
@@ -37,18 +37,18 @@ class FeedFragmentDelegate(
     override fun onViewsResolved(savedState: Bundle?) {
         lifecycle.addObserver(this)
 
-        feedModel.viewState { feedState ->
+        homeModel.viewState { feedState ->
             when (feedState) {
-                FeedState.Empty -> showEmptyState()
-                FeedState.Loading -> showLoadingState()
-                FeedState.ShowPermissionUI -> showPermissionsUI()
-                is FeedState.Success -> showSuccessState()
+                HomeState.Empty -> showEmptyState()
+                HomeState.Loading -> showLoadingState()
+                HomeState.ShowPermissionUI -> showPermissionsUI()
+                is HomeState.Success -> showSuccessState()
             }.exhaust
         }
-        feedModel.enableLocationServices()
+        homeModel.enableLocationServices()
 
         enableLocationCta.setOnClickListener {
-            feedModel.enableLocationServices()
+            homeModel.enableLocationServices()
         }
     }
 
@@ -59,17 +59,17 @@ class FeedFragmentDelegate(
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == DeviceLocation.REQUEST_LOCATION_SERVICES_RESULT_CODE) {
             when (resultCode) {
-                Activity.RESULT_OK -> feedModel.getCurrentLocation()
-                Activity.RESULT_CANCELED -> feedModel.onPermissionDenied()
+                Activity.RESULT_OK -> homeModel.getCurrentLocation()
+                Activity.RESULT_CANCELED -> homeModel.onPermissionDenied()
             }
         }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        if (feedPermissions.isPermissionGranted(requestCode, permissions, grantResults)) {
-            feedModel.enableLocationServices()
+        if (homePermissions.isPermissionGranted(requestCode, permissions, grantResults)) {
+            homeModel.enableLocationServices()
         } else {
-            feedModel.onPermissionDenied()
+            homeModel.onPermissionDenied()
         }
     }
 
@@ -90,7 +90,7 @@ class FeedFragmentDelegate(
     private fun showPermissionsUI() {
         fragment.requestPermissions(
             arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
-            AndroidFeedPermissions.LOCATION_PERMISSION_REQUEST_CODE
+            AndroidHomePermissions.LOCATION_PERMISSION_REQUEST_CODE
         )
     }
 }

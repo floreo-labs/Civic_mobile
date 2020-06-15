@@ -1,16 +1,16 @@
-package com.civic.feed
+package com.civic.home
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import com.civic.arch.State
-import com.civic.feed.arch.FeedModel
-import com.civic.feed.arch.FeedState
-import com.civic.feed.epoxy.FeedEpoxyController
+import com.civic.home.arch.HomeModel
+import com.civic.home.arch.HomeState
+import com.civic.home.epoxy.HomeEpoxyController
 import org.kodein.di.*
 
-object FeedModule {
+object HomeModule {
 
     fun create(fragment: Fragment) = DI.Module(name = "FeedModule") {
         bind() from provider { fragment }
@@ -19,14 +19,14 @@ object FeedModule {
 
         bind<CoroutineScope>() with provider { instance<Fragment>().lifecycleScope }
 
-        bind() from singleton { FeedEpoxyController() }
+        bind() from singleton { HomeEpoxyController() }
 
-        bind() from provider { AndroidFeedPermissions(instance()) }
+        bind() from provider { AndroidHomePermissions(instance()) }
 
         bind() from singleton {
-            FeedModel(instance(), Dispatchers.IO, instance(), State(FeedState.Empty), instance(), instance())
+            HomeModel(instance(), Dispatchers.IO, instance(), State(HomeState.Empty), instance(), instance())
         }
 
-        bind() from provider { FeedFragmentDelegate(instance(), instance(), instance(), instance()) }
+        bind() from provider { HomeFragmentDelegate(instance(), instance(), instance(), instance()) }
     }
 }

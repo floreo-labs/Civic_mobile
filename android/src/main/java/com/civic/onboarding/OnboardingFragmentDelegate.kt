@@ -37,8 +37,8 @@ class OnboardingFragmentDelegate(
     private fun createOnboardingItems() : List<OnboardingItemData> =
         listOf(
             OnboardingItemData(
-                drawableRes = R.drawable.vector_drawable_article_black_24dp,
-                titleText = androidResources.getString(R.string.feed),
+                drawableRes = R.drawable.vector_drawable_home_black_24dp,
+                titleText = androidResources.getString(R.string.home),
                 bodyText =  androidResources.getString(R.string.onboarding_item_data_feed_description)
             ),
             OnboardingItemData(

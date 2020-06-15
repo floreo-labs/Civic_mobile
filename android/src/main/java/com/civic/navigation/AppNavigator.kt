@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.civic.R
 import com.civic.onboarding.OnboardingFragment
-import com.civic.feed.FeedFragment
+import com.civic.home.HomeFragment
 
 class AppNavigator(private val supportFragmentManager: FragmentManager, private val activity: AppCompatActivity) : AppNavigation {
 
@@ -24,7 +24,7 @@ class AppNavigator(private val supportFragmentManager: FragmentManager, private 
         } 
         supportFragmentManager.beginTransaction()
             .disallowAddToBackStack()
-            .add(R.id.activity_root_fragment_container, FeedFragment.newInstance(), FeedFragment.TAG)
+            .add(R.id.activity_root_fragment_container, HomeFragment.newInstance(), HomeFragment.TAG)
             .commit()
     }
 }

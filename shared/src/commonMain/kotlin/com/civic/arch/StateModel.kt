@@ -3,13 +3,16 @@ package com.civic.arch
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 /**
  * [coroutineScope] should be lifecycle-component bound
  */
-open class StateModel(private val coroutineScope: CoroutineScope) {
+open class StateModel(protected val coroutineScope: CoroutineScope) {
+
+    val TEST_FLOW: Flow<String> = channelFlow {  }
 
     private val jobs = mutableListOf<Job>()
 
