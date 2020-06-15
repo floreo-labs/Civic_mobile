@@ -5,15 +5,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.civic.R
 import org.kodein.di.DIAware
-import org.kodein.di.instance
+import org.kodein.di.DIContext
 import org.kodein.di.android.di
-import org.kodein.di.android.subDI
+import org.kodein.di.diContext
+import org.kodein.di.instance
 
 class RootActivity : AppCompatActivity(), DIAware {
 
-    override val di by subDI(di()) {
-        import(ActivityModule.create(this@RootActivity))
-    }
+    override val diContext: DIContext<*> = diContext(this)
+
+    override val di by di()
 
     private val delegate by instance<RootActivityDelegate>()
 

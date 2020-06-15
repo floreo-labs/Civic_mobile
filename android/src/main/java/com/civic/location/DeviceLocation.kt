@@ -7,17 +7,15 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
 import com.civic.arch.State
 import com.civic.domain.SharedAddress
 import com.civic.extensions.takeIfInstance
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class DeviceLocation(private val locationManager: LocationManager,
-                    private val activity: AppCompatActivity,
                     private val sharedAddressState: State<SharedAddress>
 ) : LocationService {
 
@@ -27,8 +25,8 @@ class DeviceLocation(private val locationManager: LocationManager,
 
     private lateinit var locationProviderClient: FusedLocationProviderClient
     private lateinit var settingsClient: SettingsClient
-
-    private val geocoder = Geocoder(activity, Locale.getDefault())
+    private lateinit var geocoder: Geocoder
+    private lateinit var activity: Activity
 
     private var locationCallback: LocationCallback ?= null
 
@@ -40,7 +38,10 @@ class DeviceLocation(private val locationManager: LocationManager,
                 isProviderEnabled(LocationManager.GPS_PROVIDER) || isProviderEnabled(LocationManager.NETWORK_PROVIDER)
             }
 
-    override fun init() {
+    override fun init(activity: Activity) {
+        this.activity = activity
+
+        geocoder = Geocoder(activity, Locale.getDefault())
         locationProviderClient = LocationServices.getFusedLocationProviderClient(activity)
         settingsClient = LocationServices.getSettingsClient(activity)
     }

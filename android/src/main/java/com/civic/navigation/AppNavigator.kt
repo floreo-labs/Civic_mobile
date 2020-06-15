@@ -1,12 +1,11 @@
 package com.civic.navigation
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import com.civic.R
-import com.civic.onboarding.OnboardingFragment
 import com.civic.home.HomeFragment
+import com.civic.onboarding.OnboardingFragment
 
-class AppNavigator(private val supportFragmentManager: FragmentManager, private val activity: AppCompatActivity) : AppNavigation {
+class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNavigation {
 
     override fun showOnboarding() {
         supportFragmentManager.beginTransaction()

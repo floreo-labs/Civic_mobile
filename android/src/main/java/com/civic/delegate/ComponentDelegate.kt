@@ -25,7 +25,7 @@ abstract class ComponentDelegate {
         onViewsResolved(savedState)
     }
 
-    fun unbind() {
+    open fun unbind() {
         viewPropertyDelegateRegistry.forEach { viewPropertyDelegate ->
             viewPropertyDelegate.clear()
         }
