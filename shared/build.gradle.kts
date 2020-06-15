@@ -25,12 +25,6 @@ kotlin {
                 implementation("org.kodein.di:kodein-di:7.0.0")
             }
         }
-        val commonTest by getting {
-            dependencies {
-        		implementation(kotlin("test-common"))
-        		implementation(kotlin("test-annotations-common"))
-            }
-        }
 
         val androidMain by getting {
             dependencies {
@@ -39,12 +33,7 @@ kotlin {
                 implementation(kotlin("stdlib"))
             }
         }
-
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(kotlin("test-junit"))
-            }
-        }
     }
 }
+
+configurations.create("compileClasspath")

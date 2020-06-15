@@ -6,8 +6,6 @@ import com.civic.arch.StateModel
 import com.civic.domain.SharedAddress
 import com.civic.home.HomePermissions
 import com.civic.location.LocationService
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlin.coroutines.CoroutineContext
 
 class HomeModel(coroutineScope: CoroutineScope,
