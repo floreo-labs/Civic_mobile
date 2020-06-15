@@ -1,16 +1,12 @@
 package com.civic.home.arch
 
-import kotlinx.coroutines.CoroutineScope
 import com.civic.arch.State
 import com.civic.arch.StateModel
 import com.civic.domain.SharedAddress
 import com.civic.home.HomePermissions
 import com.civic.location.LocationService
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class HomeModel(coroutineScope: CoroutineScope,
