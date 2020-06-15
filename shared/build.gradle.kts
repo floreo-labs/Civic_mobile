@@ -4,7 +4,7 @@ plugins {
 
 kotlin {
     targets {
-        jvm("android") {
+        jvm() {
             compilations.all {
                 kotlinOptions.jvmTarget = "1.8"
             }
@@ -26,7 +26,7 @@ kotlin {
             }
         }
 
-        val androidMain by getting {
+        val jvmMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
                 implementation("org.kodein.di:kodein-di-jvm:7.0.0")
@@ -35,5 +35,3 @@ kotlin {
         }
     }
 }
-
-configurations.create("compileClasspath")

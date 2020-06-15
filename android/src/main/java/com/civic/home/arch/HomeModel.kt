@@ -3,7 +3,6 @@ package com.civic.home.arch
 import kotlinx.coroutines.CoroutineScope
 import com.civic.arch.State
 import com.civic.arch.StateModel
-import com.civic.arch.TheFuck
 import com.civic.domain.SharedAddress
 import com.civic.home.HomePermissions
 import com.civic.location.LocationService
