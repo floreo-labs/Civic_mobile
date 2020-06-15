@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		
+		<dimen name="fragment_onboarding_dots_view_size">16dp</dimen>
+		<dimen name="fragment_onboarding_active_dot_size">8dp</dimen>
+		<dimen name="fragment_onboarding_inactive_dot_size">4dp</dimen>
+		
+</resources>

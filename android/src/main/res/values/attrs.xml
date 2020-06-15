@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		<declare-styleable name="ViewPagerDots">
+				<attr name="activeDotSize" format="reference" />
+				<attr name="inactiveDotSize" format="reference" />
+		</declare-styleable>
+</resources>

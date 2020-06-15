@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		
+		<string name="onboarding_item_data_feed_description">
+				View local, state and federal campaigns that matter to you
+		</string>
+		<string name="onboarding_item_data_search_description">
+				Search for anything from bills in your state legislature to local elected officials\' voting history
+		</string>
+		<string name="onboarding_item_data_reminder_description">
+				Opt-in for reminders about when/where to vote and information on who\'s running
+		</string>
+		
+		<string name="onboarding_finished">Get Started</string>
+		
+</resources>

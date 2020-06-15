@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+		
+		<string name="feed_location_services_disabled_cta">
+				Enable
+		</string>
+		
+		<string name="feed_location_services_disabled_content_desc">
+				Enable location services to find Civic information in your area
+		</string>
+		
+		<string name="feed_manually_enter_address_hint">
+				Find Civic information by entering address
+		</string>
+		
+		<string name="feed_enable_location_dialog_title">
+				Enable Location
+		</string>
+		
+		<string name="feed_enable_location_dialog_body">
+				To find bills, campaigns, and other Civic information near you automatically, turn on location services.
+		</string>
+		
+		<string name="feed_enable_location_dialog_pos_button">
+				Sure
+		</string>
+		
+		<string name="feed_enable_location_dialog_neg_button">
+				Nah
+		</string>
+		
+</resources>
