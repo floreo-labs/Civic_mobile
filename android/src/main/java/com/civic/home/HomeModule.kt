@@ -2,31 +2,29 @@ package com.civic.home
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import com.civic.arch.State
 import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
 import com.civic.home.epoxy.HomeEpoxyController
-import org.kodein.di.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import org.koin.dsl.module
 
 object HomeModule {
 
-    fun create(fragment: Fragment) = DI.Module(name = "FeedModule") {
-        bind() from provider { fragment }
+    fun create(fragment: Fragment) = module {
+        single { fragment }
 
-        bind() from provider { instance<Fragment>().lifecycle }
+        single { fragment.lifecycle }
 
-        bind<CoroutineScope>() with provider { instance<Fragment>().lifecycleScope }
+        single<CoroutineScope> { fragment.lifecycleScope }
 
-        bind() from singleton { HomeEpoxyController() }
+        single { HomeEpoxyController() }
 
-        bind() from provider { AndroidHomePermissions(instance()) }
+        single { AndroidHomePermissions(get()) }
 
-        bind() from singleton {
-            HomeModel(instance(), Dispatchers.IO, instance(), State(HomeState.Empty), instance(), instance())
-        }
+        single { HomeModel(get(), Dispatchers.IO, get(), State(HomeState.Empty), get(), get()) }
 
-        bind() from provider { HomeFragmentDelegate(instance(), instance(), instance(), instance()) }
+        single { HomeFragmentDelegate(get(), get(), get(), get()) }
     }
 }

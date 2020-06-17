@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id("koin")
 }
 
 android {
@@ -46,7 +47,8 @@ dependencies {
 
     // KOTLIN
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
-    implementation("org.kodein.di:kodein-di-framework-android-x:7.0.0")
+    implementation("org.koin:koin-android:2.1.6")
+    implementation("org.koin:koin-android-scope:2.1.6")
 
     // ANDROID
     implementation("androidx.appcompat:appcompat:1.1.0")

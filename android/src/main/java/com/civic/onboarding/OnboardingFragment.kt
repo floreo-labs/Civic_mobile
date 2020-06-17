@@ -2,12 +2,12 @@ package com.civic.onboarding
 
 import com.civic.R
 import com.civic.delegate.fragment.ComponentDelegateFragment
-import org.kodein.di.DIAware
-import org.kodein.di.android.subDI
-import org.kodein.di.android.x.di
-import org.kodein.di.instance
+import org.koin.core.Koin
+import org.koin.core.KoinComponent
+import org.koin.core.context.loadKoinModules
+import org.koin.core.inject
 
-class OnboardingFragment : ComponentDelegateFragment(), DIAware {
+class OnboardingFragment : ComponentDelegateFragment(), KoinComponent {
 
     companion object {
         val TAG = OnboardingFragment::class.simpleName
@@ -15,11 +15,11 @@ class OnboardingFragment : ComponentDelegateFragment(), DIAware {
         fun newInstance() = OnboardingFragment()
     }
 
-    override val di by subDI(di()) {
-        import(OnboardingModule.create())
+    override fun getKoin(): Koin = getKoin().also {
+        loadKoinModules(OnboardingModule.create())
     }
 
-    override val delegate by instance<OnboardingFragmentDelegate>()
+    override val delegate by inject<OnboardingFragmentDelegate>()
 
     override val layoutId: Int
         get() = R.layout.fragment_onboarding

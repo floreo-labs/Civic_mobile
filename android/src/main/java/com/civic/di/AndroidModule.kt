@@ -5,19 +5,19 @@ import android.content.Context
 import android.location.LocationManager
 import com.civic.common.android.AndroidResources
 import com.civic.common.android.CommonAnimations
-import org.kodein.di.*
+import org.koin.dsl.module
 
 object AndroidModule {
 
-    fun create(application: Application) = DI.Module(name = "AndroidModule") {
-        bind() from singleton { application }
+    fun create(application: Application) = module {
+        single { application }
 
-        bind() from singleton { AndroidResources(instance()) }
+        single { AndroidResources(get()) }
 
-        bind<LocationManager>() with singleton { application.getSystemService(Context.LOCATION_SERVICE) as LocationManager }
+        single { application.getSystemService(Context.LOCATION_SERVICE) as LocationManager }
 
-        bind() from  singleton { application.getSharedPreferences("Civic", Context.MODE_PRIVATE) }
+        single { application.getSharedPreferences("Civic", Context.MODE_PRIVATE) }
 
-        bind<CommonAnimations>() with provider { CommonAnimations() }
+        factory { CommonAnimations() }
     }
 }

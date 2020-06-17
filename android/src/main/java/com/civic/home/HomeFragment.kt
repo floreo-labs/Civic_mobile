@@ -3,12 +3,12 @@ package com.civic.home
 import com.civic.R
 import com.civic.delegate.ComponentDelegate
 import com.civic.delegate.fragment.ComponentDelegateFragment
-import org.kodein.di.DIAware
-import org.kodein.di.android.subDI
-import org.kodein.di.android.x.di
-import org.kodein.di.instance
+import org.koin.core.Koin
+import org.koin.core.KoinComponent
+import org.koin.core.context.loadKoinModules
+import org.koin.core.inject
 
-class HomeFragment: ComponentDelegateFragment(), DIAware {
+class HomeFragment: ComponentDelegateFragment(), KoinComponent {
 
     companion object {
         val TAG = HomeFragment::class.simpleName
@@ -16,11 +16,11 @@ class HomeFragment: ComponentDelegateFragment(), DIAware {
         fun newInstance() = HomeFragment()
     }
 
-    override val di by subDI(di()) {
-        import(HomeModule.create(this@HomeFragment))
+    override fun getKoin(): Koin = getKoin().also {
+        loadKoinModules(HomeModule.create(this))
     }
 
-    override val delegate: ComponentDelegate by instance<HomeFragmentDelegate>()
+    override val delegate: ComponentDelegate by inject<HomeFragmentDelegate>()
     override val layoutId: Int
         get() = R.layout.fragment_feed
 }

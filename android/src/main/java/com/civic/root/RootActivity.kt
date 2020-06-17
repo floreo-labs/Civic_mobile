@@ -4,21 +4,16 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.civic.R
-import org.kodein.di.DIAware
-import org.kodein.di.DIContext
-import org.kodein.di.android.di
-import org.kodein.di.diContext
-import org.kodein.di.instance
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class RootActivity : AppCompatActivity(), DIAware {
+class RootActivity : AppCompatActivity(), KoinComponent {
 
-    override val diContext: DIContext<*> = diContext(this)
-
-    override val di by di()
-
-    private val delegate by instance<RootActivityDelegate>()
+    private val delegate by inject<RootActivityDelegate>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val koin = getKoin()
+        val scope = koin.getOrCreateScope<AppCompatActivity>("Activity")
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_root)

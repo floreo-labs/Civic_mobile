@@ -3,20 +3,18 @@ package com.civic
 import android.app.Application
 import com.civic.di.AndroidModule
 import com.civic.di.AppModule
-import com.civic.root.ActivityModule
-import org.kodein.di.DI
-import org.kodein.di.DIAware
-import org.kodein.di.android.x.androidXContextTranslators
+import org.koin.core.context.startKoin
 
-class CivicApplication : Application(), DIAware {
+class CivicApplication : Application() {
 
-    override val di: DI = DI.lazy {
-        import(AndroidModule.create(this@CivicApplication))
+    override fun onCreate() {
+        super.onCreate()
 
-        import(AppModule.create())
-
-        import(androidXContextTranslators)
-
-        import(ActivityModule.create())
+        startKoin {
+            modules(
+                AndroidModule.create(this@CivicApplication),
+                AppModule.create()
+            )
+        }
     }
 }

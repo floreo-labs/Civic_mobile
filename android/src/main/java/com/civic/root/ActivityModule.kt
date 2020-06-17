@@ -3,31 +3,23 @@ package com.civic.root
 import androidx.appcompat.app.AppCompatActivity
 import com.civic.location.DeviceLocation
 import com.civic.location.LocationService
-import com.civic.navigation.AppNavigation
 import com.civic.navigation.AppNavigator
-import org.kodein.di.DI
-import org.kodein.di.android.x.AndroidLifecycleScope
-import org.kodein.di.bind
-import org.kodein.di.instance
-import org.kodein.di.scoped
-import org.kodein.di.singleton
+import org.koin.dsl.module
 
 object ActivityModule {
 
-    fun create() = DI.Module(name = "ActivityModule") {
-        val scoped = scoped(AndroidLifecycleScope.singleItem)
+    fun create(activity: AppCompatActivity) = module {
+        single { activity }
 
-        bind<AppCompatActivity>() with scoped.singleton { context as AppCompatActivity }
+        single { activity.supportFragmentManager }
 
-        bind() from scoped.singleton { instance<AppCompatActivity>().supportFragmentManager }
+        single { activity.lifecycle }
 
-        bind() from scoped.singleton { context.lifecycle }
+        single<LocationService> { DeviceLocation(get(), get()) }
 
-        bind<LocationService>() with scoped.singleton { DeviceLocation(instance(), instance()) }
+        single { AppNavigator(get()) }
 
-        bind<AppNavigation>() with scoped.singleton { AppNavigator(instance()) }
-
-        bind<RootActivityDelegate>() with scoped.singleton { RootActivityDelegate(instance(), instance(), instance(), instance(), instance(), instance()) }
+        factory { RootActivityDelegate(get(), get(), get(), get(), get(), get()) }
     }
 }
 
