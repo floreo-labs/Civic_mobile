@@ -1,6 +1,5 @@
 package com.civic.root
 
-import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -45,7 +44,7 @@ class RootActivityDelegate(private val supportFragmentManager: FragmentManager,
     }
 
     override fun onCreate(owner: LifecycleOwner) {
-        deviceLocation.init(bottomNav.context as Activity)
+        deviceLocation.init()
     }
 
     override fun onPause(owner: LifecycleOwner) {

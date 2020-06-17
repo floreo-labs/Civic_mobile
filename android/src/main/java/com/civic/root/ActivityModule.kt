@@ -1,25 +1,26 @@
 package com.civic.root
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import com.civic.location.DeviceLocation
 import com.civic.location.LocationService
+import com.civic.navigation.AppNavigation
 import com.civic.navigation.AppNavigator
 import org.koin.dsl.module
 
 object ActivityModule {
 
-    fun create(activity: AppCompatActivity) = module {
-        single { activity }
+    fun create(activity: RootActivity) = module {
+        single<Activity> { activity }
 
         single { activity.supportFragmentManager }
 
         single { activity.lifecycle }
 
-        single<LocationService> { DeviceLocation(get(), get()) }
+        single<LocationService> { DeviceLocation(get(), get(), get()) }
 
-        single { AppNavigator(get()) }
+        single<AppNavigation> { AppNavigator(get()) }
 
-        factory { RootActivityDelegate(get(), get(), get(), get(), get(), get()) }
+        single { RootActivityDelegate(get(), get(), get(), get(), get(), get()) }
     }
 }
 

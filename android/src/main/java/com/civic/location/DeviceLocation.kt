@@ -23,6 +23,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class DeviceLocation(private val locationManager: LocationManager,
+                     private val activity: Activity,
                     private val sharedAddressState: State<SharedAddress>
 ) : LocationService {
 
@@ -33,7 +34,6 @@ class DeviceLocation(private val locationManager: LocationManager,
     private lateinit var locationProviderClient: FusedLocationProviderClient
     private lateinit var settingsClient: SettingsClient
     private lateinit var geocoder: Geocoder
-    private lateinit var activity: Activity
 
     private var locationCallback: LocationCallback ?= null
 
@@ -42,12 +42,10 @@ class DeviceLocation(private val locationManager: LocationManager,
      */
     override val areLocationServicesEnabled: Boolean
         get() = locationManager.run {
-                isProviderEnabled(LocationManager.GPS_PROVIDER) || isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-            }
+            isProviderEnabled(LocationManager.GPS_PROVIDER) || isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+        }
 
-    override fun init(activity: Activity) {
-        this.activity = activity
-
+    override fun init() {
         geocoder = Geocoder(activity, Locale.getDefault())
         locationProviderClient = LocationServices.getFusedLocationProviderClient(activity)
         settingsClient = LocationServices.getSettingsClient(activity)
