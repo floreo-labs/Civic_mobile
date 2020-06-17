@@ -33,9 +33,9 @@ class RootActivityDelegate(private val supportFragmentManager: FragmentManager,
         lifecycle.addObserver(this)
         if (savedState == null) {
             if (sharedPreferences.getBoolean(OnboardingConstants.HAS_SEEN_TUTORIAL, false)) {
-//                appNavigation.showFeed()
+                appNavigation.showFeed()
             } else {
-//                appNavigation.showOnboarding()
+                appNavigation.showOnboarding()
             }
 
             initBottomNavBar()

@@ -6,6 +6,7 @@ import org.koin.core.Koin
 import org.koin.core.KoinComponent
 import org.koin.core.context.loadKoinModules
 import org.koin.core.inject
+import org.koin.core.module.Module
 
 class OnboardingFragment : ComponentDelegateFragment(), KoinComponent {
 
@@ -20,6 +21,9 @@ class OnboardingFragment : ComponentDelegateFragment(), KoinComponent {
     }
 
     override val delegate by inject<OnboardingFragmentDelegate>()
+    override val module: Module by lazy {
+        OnboardingModule.create()
+    }
 
     override val layoutId: Int
         get() = R.layout.fragment_onboarding

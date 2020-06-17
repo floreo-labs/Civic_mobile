@@ -50,7 +50,6 @@ dependencies {
     implementation("org.koin:koin-core:2.1.6")
     implementation("org.koin:koin-androidx-scope:2.1.6")
     implementation("org.koin:koin-androidx-fragment:2.1.6")
-    implementation("org.koin:koin-androidx-ext:2.1.6")
 
     // ANDROID
     implementation("androidx.appcompat:appcompat:1.1.0")
