@@ -2,7 +2,7 @@ package com.civic.home.arch
 
 import com.civic.arch.State
 import com.civic.arch.StateModel
-import com.civic.domain.SharedAddress
+import com.civic.domain.UserLocation
 import com.civic.home.HomePermissions
 import com.civic.location.LocationService
 import kotlinx.coroutines.CoroutineScope
@@ -11,14 +11,14 @@ import kotlin.coroutines.CoroutineContext
 
 class HomeModel(coroutineScope: CoroutineScope,
                 workerContext: CoroutineContext,
-                private val sharedAddressState: State<SharedAddress>,
+                private val userLocationState: State<UserLocation>,
                 private val viewState: State<HomeState>,
                 private val homePermissions: HomePermissions,
                 private val locationService: LocationService
 ) : StateModel(coroutineScope) {
 
     fun viewState(onStateUpdate: suspend (HomeState) -> Unit) {
-        collectWith(sharedAddressState.flow.filterNotNull()) {
+        collectWith(userLocationState.flow.filterNotNull()) {
             viewState += HomeState.Success(1)
         }
 

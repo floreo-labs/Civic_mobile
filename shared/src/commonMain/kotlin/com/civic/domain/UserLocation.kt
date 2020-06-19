@@ -1,6 +1,6 @@
 package com.civic.domain
 
-data class SharedAddress(
+data class UserLocation(
     val featureName: String,
     val adminArea: String,
     val subAdminArea: String,

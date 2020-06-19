@@ -42,12 +42,12 @@ class ViewPagerDots @JvmOverloads constructor(
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ViewPagerDots)
 
         activeDotSize = typedArray.getDimension(R.styleable.ViewPagerDots_activeDotSize, 0f)
-        activeDotColor = ContextCompat.getColor(context, R.color.primary_light)
+        activeDotColor = ContextCompat.getColor(context, R.color.primaryVariant)
         animatedActiveDotSize = activeDotSize
         animatedActiveDotColor = activeDotColor
 
         inactiveDotSize = typedArray.getDimension(R.styleable.ViewPagerDots_inactiveDotSize, 0f)
-        inactiveDotColor = ContextCompat.getColor(context, R.color.primary_dark)
+        inactiveDotColor = ContextCompat.getColor(context, R.color.primaryVariant)
         animatedInactiveDotSize = inactiveDotSize
         animatedInactiveDotColor = inactiveDotColor
 

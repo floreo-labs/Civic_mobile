@@ -8,7 +8,7 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Looper
 import com.civic.arch.State
-import com.civic.domain.SharedAddress
+import com.civic.domain.UserLocation
 import com.civic.extensions.takeIfInstance
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit
 
 class DeviceLocation(private val locationManager: LocationManager,
                      private val activity: Activity,
-                    private val sharedAddressState: State<SharedAddress>
+                    private val userLocationState: State<UserLocation>
 ) : LocationService {
 
     companion object {
@@ -129,7 +129,7 @@ class DeviceLocation(private val locationManager: LocationManager,
         val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (addresses.isNotEmpty()) {
             val sharedAddress = addresses.first().run(this::toSharedAddress)
-            sharedAddressState += sharedAddress
+            userLocationState += sharedAddress
         }
     }
 
@@ -139,7 +139,7 @@ class DeviceLocation(private val locationManager: LocationManager,
         .setInterval(TimeUnit.SECONDS.toMillis(60))
 
     private fun toSharedAddress(address: Address) = address.run {
-        SharedAddress(
+        UserLocation(
             featureName = featureName,
             adminArea = adminArea,
             subAdminArea = subAdminArea,
