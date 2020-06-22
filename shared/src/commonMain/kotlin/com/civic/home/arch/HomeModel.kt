@@ -1,8 +1,10 @@
 package com.civic.home.arch
 
 import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Response
 import com.civic.arch.State
 import com.civic.arch.StateModel
+import com.civic.domain.Legislator
 import com.civic.domain.UserLocation
 import com.civic.home.HomePermissions
 import com.civic.home.LocationService
@@ -66,11 +68,21 @@ class HomeModel(coroutineScope: CoroutineScope,
                     viewState += HomeState.Error
                 }
                 .map { response ->
-                    HomeState.Success(1)
+                    response.mapToViewState()
                 }
             collectWith(flow) { homeState ->
                 viewState += homeState
             }
         }
     }
+
+    private fun Response<YourLegislatorsQuery.Data>.mapToViewState() =
+        HomeState.Success(legislators = data!!.legislators!!.edges.map { edge ->
+            edge!!.node!!.run {
+                Legislator(
+                    name = name!!,
+                    imageUrl = image!!
+                )
+            }
+        })
 }

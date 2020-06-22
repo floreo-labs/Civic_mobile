@@ -3,6 +3,7 @@ query YourLegislatorsQuery($latitude: Float!, $longitude: Float!) {
         edges {
             node {
                 name
+                image
                 chamber: currentMemberships(classification:["upper", "lower"]) {
                     post {
                         label
