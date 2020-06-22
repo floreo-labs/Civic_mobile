@@ -5,6 +5,7 @@ import android.widget.TextView
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
+import com.bumptech.glide.Glide
 import com.civic.R
 import com.civic.common.android.setDistinctText
 import com.civic.epoxy.KotlinHolder
@@ -26,6 +27,10 @@ abstract class HomeItemModel : EpoxyModelWithHolder<HomeItemModel.ViewHolder>() 
 
         fun setData(data: HomeItem) {
             title.setDistinctText(data.text)
+
+            Glide.with(image)
+                .load(data.imageUrl)
+                .into(image)
         }
     }
 }

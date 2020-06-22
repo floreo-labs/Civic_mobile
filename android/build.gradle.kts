@@ -65,6 +65,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
     implementation("com.airbnb.android:epoxy:4.0.0-beta4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha03")
+    implementation("com.github.bumptech.glide:glide:4.11.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
     kapt("com.airbnb.android:epoxy-processor:4.0.0-beta4")
 
     // GRAPH

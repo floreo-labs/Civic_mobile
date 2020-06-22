@@ -81,7 +81,7 @@ class HomeModel(coroutineScope: CoroutineScope,
             edge!!.node!!.run {
                 Legislator(
                     name = name!!,
-                    imageUrl = image!!
+                    imageUrl = image!!.replace("http://", "https://")
                 )
             }
         })
