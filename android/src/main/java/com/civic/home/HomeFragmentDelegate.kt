@@ -3,6 +3,7 @@ package com.civic.home
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -74,7 +75,7 @@ class HomeFragmentDelegate(
     }
 
     private fun showErrorState() {
-
+        root.setBackgroundColor(Color.RED)
     }
 
     private fun showLoadingState() {

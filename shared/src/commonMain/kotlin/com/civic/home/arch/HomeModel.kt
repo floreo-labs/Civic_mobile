@@ -56,8 +56,7 @@ class HomeModel(coroutineScope: CoroutineScope,
                 .map { userLocation ->
                     YourLegislatorsQuery(
                         latitude = userLocation.latitude,
-                        longitude = userLocation.longitude,
-                        first = 100
+                        longitude = userLocation.longitude
                     )
                 }
                 .flatMapConcat { yourLegislatorsQuery ->

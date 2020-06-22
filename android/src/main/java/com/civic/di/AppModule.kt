@@ -2,7 +2,9 @@ package com.civic.di
 
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.network.ApolloHttpNetworkTransport
+import com.apollographql.apollo.network.HttpMethod
 import com.civic.BuildConfig
+import com.civic.apollo.LoggingNetworkRequestInterceptor
 import com.civic.arch.State
 import com.civic.domain.UserLocation
 import org.koin.dsl.module
@@ -20,7 +22,8 @@ object AppModule {
                         "Accept" to "application/json",
                         "Content-Type" to "application/json",
                         "X-API-KEY" to BuildConfig.OPEN_STATES
-                    )
+                    ),
+                    httpMethod = HttpMethod.Post
                 )
             )
         }
