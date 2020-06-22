@@ -6,12 +6,17 @@ import com.civic.arch.StateModel
 import com.civic.domain.UserLocation
 import com.civic.home.HomePermissions
 import com.civic.home.LocationService
+import com.civic.queries.YourLegislatorsQuery
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class HomeModel(coroutineScope: CoroutineScope,
-                workerContext: CoroutineContext,
+                private val workerContext: CoroutineContext,
                 private val apolloClient: ApolloClient,
                 private val userLocationState: State<UserLocation>,
                 private val viewState: State<HomeState>,
@@ -20,9 +25,7 @@ class HomeModel(coroutineScope: CoroutineScope,
 ) : StateModel(coroutineScope) {
 
     fun viewState(onStateUpdate: suspend (HomeState) -> Unit) {
-        collectWith(userLocationState.flow.filterNotNull()) {
-            viewState += HomeState.Success(1)
-        }
+        consumeLocationState()
 
         collectWith(viewState.flow.filterNotNull(), onStateUpdate)
     }
@@ -44,5 +47,31 @@ class HomeModel(coroutineScope: CoroutineScope,
 
     fun onPermissionDenied() {
         viewState += HomeState.Empty
+    }
+
+    private fun consumeLocationState() {
+        coroutineScope.launch(context = workerContext) {
+            val flow = userLocationState.flow
+                .filterNotNull()
+                .map { userLocation ->
+                    YourLegislatorsQuery(
+                        latitude = userLocation.latitude,
+                        longitude = userLocation.longitude,
+                        first = 100
+                    )
+                }
+                .flatMapConcat { yourLegislatorsQuery ->
+                    apolloClient.query(yourLegislatorsQuery).execute()
+                }
+                .catch { exception ->
+                    viewState += HomeState.Error
+                }
+                .map { response ->
+                    HomeState.Success(1)
+                }
+            collectWith(flow) { homeState ->
+                viewState += homeState
+            }
+        }
     }
 }

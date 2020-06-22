@@ -1,8 +1,7 @@
 package com.civic.root
 
 import android.app.Activity
-import com.civic.location.DeviceLocation
-import com.civic.location.LocationService
+import com.civic.home.LocationService
 import com.civic.navigation.AppNavigation
 import com.civic.navigation.AppNavigator
 import org.koin.dsl.module
@@ -16,7 +15,7 @@ object ActivityModule {
 
         single { activity.lifecycle }
 
-        single<LocationService> { DeviceLocation(get(), get(), get()) }
+        single { LocationService(get(), get(), get()) }
 
         single<AppNavigation> { AppNavigator(get()) }
 

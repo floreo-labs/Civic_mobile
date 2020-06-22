@@ -20,7 +20,6 @@ import com.civic.delegate.ComponentDelegate
 import com.civic.extensions.exhaust
 import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
-import com.civic.location.DeviceLocation
 
 class HomeFragmentDelegate(
     private val homePermissions: HomePermissions,
@@ -43,6 +42,7 @@ class HomeFragmentDelegate(
                 HomeState.Loading -> showLoadingState()
                 HomeState.ShowPermissionUI -> showPermissionsUI()
                 is HomeState.Success -> showSuccessState()
+                HomeState.Error -> showErrorState()
             }.exhaust
         }
         homeModel.enableLocationServices()
@@ -57,7 +57,7 @@ class HomeFragmentDelegate(
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == DeviceLocation.REQUEST_LOCATION_SERVICES_RESULT_CODE) {
+        if (requestCode == LocationService.REQUEST_LOCATION_SERVICES_RESULT_CODE) {
             when (resultCode) {
                 Activity.RESULT_OK -> homeModel.getCurrentLocation()
                 Activity.RESULT_CANCELED -> homeModel.onPermissionDenied()
@@ -71,6 +71,10 @@ class HomeFragmentDelegate(
         } else {
             homeModel.onPermissionDenied()
         }
+    }
+
+    private fun showErrorState() {
+
     }
 
     private fun showLoadingState() {

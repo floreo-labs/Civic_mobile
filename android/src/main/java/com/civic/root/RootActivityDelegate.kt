@@ -11,7 +11,7 @@ import androidx.lifecycle.LifecycleOwner
 import com.civic.R
 import com.civic.common.android.CommonAnimations
 import com.civic.delegate.ComponentDelegate
-import com.civic.location.LocationService
+import com.civic.home.LocationService
 import com.civic.navigation.AppNavigation
 import com.civic.onboarding.OnboardingConstants
 import com.civic.onboarding.OnboardingFragment

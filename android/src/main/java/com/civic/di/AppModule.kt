@@ -15,7 +15,7 @@ object AppModule {
         single {
             ApolloClient(
                 networkTransport = ApolloHttpNetworkTransport(
-                    serverUrl = "https://your.domain/graphql/endpoint",
+                    serverUrl = "https://openstates.org/graphql",
                     headers = mapOf(
                         "Accept" to "application/json",
                         "Content-Type" to "application/json",
