@@ -67,8 +67,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha03")
     kapt("com.airbnb.android:epoxy-processor:4.0.0-beta4")
 
-    implementation("org.reduxkotlin:redux-kotlin-jvm:0.4.0")
-
     // LOCATION
     implementation("com.google.android.gms:play-services-location:17.0.0")
 

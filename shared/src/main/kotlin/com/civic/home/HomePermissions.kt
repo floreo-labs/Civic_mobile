@@ -6,7 +6,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
-class HomePermissions(private val fragment: Fragment) {
+actual class HomePermissions(private val fragment: Fragment) {
 
     companion object {
         const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -15,7 +15,7 @@ class HomePermissions(private val fragment: Fragment) {
     private val coarsePermission = Manifest.permission.ACCESS_COARSE_LOCATION
     private val finePermission = Manifest.permission.ACCESS_FINE_LOCATION
 
-    fun hasLocationPermission() : Boolean {
+    actual fun hasLocationPermission() : Boolean {
         val isGranted : (String) -> Boolean = { permission ->
             ContextCompat.checkSelfPermission(fragment.requireContext(), permission) == PackageManager.PERMISSION_GRANTED
         }

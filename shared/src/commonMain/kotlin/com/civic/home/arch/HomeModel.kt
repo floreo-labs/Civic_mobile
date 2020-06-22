@@ -4,7 +4,7 @@ import com.civic.arch.State
 import com.civic.arch.StateModel
 import com.civic.domain.UserLocation
 import com.civic.home.HomePermissions
-import com.civic.location.LocationService
+import com.civic.home.LocationService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.filterNotNull
 import kotlin.coroutines.CoroutineContext

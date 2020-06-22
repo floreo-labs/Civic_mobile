@@ -54,6 +54,8 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
                 implementation(kotlin("stdlib"))
+                implementation("androidx.appcompat:appcompat:1.1.0")
+                implementation("com.google.android.gms:play-services-location:17.0.0")
             }
         }
     }
