@@ -6,8 +6,8 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.civic.R
-import com.civic.epoxy.KotlinHolder
 import com.civic.common.android.setDistinctText
+import com.civic.epoxy.KotlinHolder
 
 @EpoxyModelClass(layout = R.layout.fragment_onboarding_item)
 abstract class OnboardingItemModel: EpoxyModelWithHolder<OnboardingItemModel.ViewHolder>() {
@@ -16,7 +16,6 @@ abstract class OnboardingItemModel: EpoxyModelWithHolder<OnboardingItemModel.Vie
     lateinit var data: OnboardingItemData
 
     override fun bind(holder: ViewHolder) {
-        super.bind(holder)
         holder.setData(data)
     }
 

@@ -22,5 +22,5 @@ class HomeFragment: ComponentDelegateFragment(), KoinComponent {
     override val delegate: ComponentDelegate by inject<HomeFragmentDelegate>()
 
     override val layoutId: Int
-        get() = R.layout.fragment_feed
+        get() = R.layout.fragment_home
 }

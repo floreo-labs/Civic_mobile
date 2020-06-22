@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
 import androidx.fragment.app.Fragment
@@ -21,9 +20,12 @@ import com.civic.delegate.ComponentDelegate
 import com.civic.extensions.exhaust
 import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
+import com.civic.home.epoxy.HomeEpoxyController
+import com.civic.home.epoxy.HomeItem
 
 class HomeFragmentDelegate(
     private val homePermissions: HomePermissions,
+    private val homeEpoxyController: HomeEpoxyController,
     private val fragment: Fragment,
     private val lifecycle: Lifecycle,
     private val homeModel: HomeModel
@@ -42,11 +44,13 @@ class HomeFragmentDelegate(
                 HomeState.Empty -> showEmptyState()
                 HomeState.Loading -> showLoadingState()
                 HomeState.ShowPermissionUI -> showPermissionsUI()
-                is HomeState.Success -> showSuccessState()
+                is HomeState.Success -> showSuccessState(feedState)
                 HomeState.Error -> showErrorState()
             }.exhaust
         }
         homeModel.enableLocationServices()
+
+        recycler.adapter = homeEpoxyController.adapter
 
         enableLocationCta.setOnClickListener {
             homeModel.enableLocationServices()
@@ -86,10 +90,16 @@ class HomeFragmentDelegate(
         viewStateEmptyGroup.setAllVisible(root)
     }
 
-    private fun showSuccessState() {
+    private fun showSuccessState(sucesss: HomeState.Success) {
         viewStateEmptyGroup.setAllGone(root)
 
-        Toast.makeText(viewStateEmptyGroup.context, "GOT LOCATION", Toast.LENGTH_SHORT).show()
+        val items = sucesss.legislators.map { legislator ->
+            HomeItem(
+                imageUrl = legislator.imageUrl,
+                text = legislator.name
+            )
+        }
+        homeEpoxyController.setData(items)
     }
 
     private fun showPermissionsUI() {
