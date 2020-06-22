@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
@@ -32,6 +33,7 @@ class HomeFragmentDelegate(
 ) : ComponentDelegate(), DefaultLifecycleObserver {
 
     private val viewStateEmptyGroup by register<Group>(R.id.fragment_feed_empty_group)
+    private val loading by register<View>(R.id.fragment_feed_loading)
     private val recycler by register<RecyclerView>(R.id.fragment_feed_recycler)
     private val root by register<ConstraintLayout>(R.id.fragment_feed_root)
     private val enableLocationCta by register<View>(R.id.fragment_feed_empty_enable_location)
@@ -79,19 +81,27 @@ class HomeFragmentDelegate(
     }
 
     private fun showErrorState() {
+        loading.isVisible = false
+
         root.setBackgroundColor(Color.RED)
     }
 
     private fun showLoadingState() {
         viewStateEmptyGroup.setAllGone(root)
+
+        loading.isVisible = true
     }
 
     private fun showEmptyState() {
         viewStateEmptyGroup.setAllVisible(root)
+
+        loading.isVisible = false
     }
 
     private fun showSuccessState(sucesss: HomeState.Success) {
         viewStateEmptyGroup.setAllGone(root)
+
+        loading.isVisible = false
 
         val items = sucesss.legislators.map { legislator ->
             HomeItem(
@@ -103,6 +113,8 @@ class HomeFragmentDelegate(
     }
 
     private fun showPermissionsUI() {
+        loading.isVisible = true
+
         fragment.requestPermissions(
             arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION),
             HomePermissions.LOCATION_PERMISSION_REQUEST_CODE
