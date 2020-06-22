@@ -5,6 +5,8 @@ plugins {
     id("koin")
 }
 
+apply("../keys.properties")
+
 android {
     compileSdkVersion(29)
     buildToolsVersion("29.0.3")
@@ -19,6 +21,9 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val key = project.property("OPEN_STATES") as String\
+        buildConfigField("String", "OPEN_STATES", "\"${key}\"")
     }
 
     buildTypes {
