@@ -24,7 +24,7 @@ object HomeModule {
 
         single { HomePermissions(get()) }
 
-        single { HomeModel(get(), Dispatchers.IO, get(), State(HomeState.Empty), get(), get()) }
+        single { HomeModel(get(), Dispatchers.IO, get(), get(), State(HomeState.Empty), get(), get()) }
 
         single { HomeFragmentDelegate(get(), get(), get(qualifier = named(HomeFragment.TAG)), get()) }
     }

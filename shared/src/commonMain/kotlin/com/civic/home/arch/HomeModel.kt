@@ -1,5 +1,6 @@
 package com.civic.home.arch
 
+import com.apollographql.apollo.ApolloClient
 import com.civic.arch.State
 import com.civic.arch.StateModel
 import com.civic.domain.UserLocation
@@ -11,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 class HomeModel(coroutineScope: CoroutineScope,
                 workerContext: CoroutineContext,
+                private val apolloClient: ApolloClient,
                 private val userLocationState: State<UserLocation>,
                 private val viewState: State<HomeState>,
                 private val homePermissions: HomePermissions,
