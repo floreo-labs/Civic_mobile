@@ -46,7 +46,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib-common"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7")
-                implementation("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
+                api("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
             }
         }
 
