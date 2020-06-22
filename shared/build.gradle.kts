@@ -1,6 +1,7 @@
 plugins {
     id("org.jetbrains.kotlin.multiplatform")
     id("com.android.library")
+    id("com.apollographql.apollo").version("2.2.1")
 }
 
 android {
@@ -45,6 +46,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib-common"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:1.3.7")
+                implementation("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
             }
         }
 

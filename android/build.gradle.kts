@@ -22,7 +22,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        val key = project.property("OPEN_STATES") as String\
+        val key = project.property("OPEN_STATES") as String
         buildConfigField("String", "OPEN_STATES", "\"${key}\"")
     }
 
