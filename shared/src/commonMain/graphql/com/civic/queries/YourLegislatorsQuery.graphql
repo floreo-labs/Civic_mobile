@@ -1,0 +1,21 @@
+query YourLegislatorsQuery($latitude: Float!, $longitude: Float!) {
+    legislators: people(latitude: $latitude, longitude: $longitude ) {
+        edges {
+            node {
+                name
+                chamber: currentMemberships(classification: ["upper", "lower"]) {
+                    post {
+                        label
+                    }
+                    organization {
+                        name
+                        classification
+                        parent {
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
