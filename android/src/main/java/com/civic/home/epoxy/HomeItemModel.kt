@@ -30,6 +30,7 @@ abstract class HomeItemModel : EpoxyModelWithHolder<HomeItemModel.ViewHolder>() 
 
             Glide.with(image)
                 .load(data.imageUrl)
+                .centerCrop()
                 .into(image)
         }
     }
