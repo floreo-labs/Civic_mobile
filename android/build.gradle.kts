@@ -67,7 +67,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha03")
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
-    kapt("com.airbnb.android:epoxy-processor:4.0.0-beta4")
 
     // GRAPH
     implementation("com.apollographql.apollo:apollo-normalized-cache-sqlite:2.2.1")

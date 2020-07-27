@@ -2,36 +2,22 @@ package com.civic.home.epoxy
 
 import android.widget.ImageView
 import android.widget.TextView
-import com.airbnb.epoxy.EpoxyAttribute
-import com.airbnb.epoxy.EpoxyModelClass
-import com.airbnb.epoxy.EpoxyModelWithHolder
 import com.bumptech.glide.Glide
 import com.civic.R
 import com.civic.common.android.setDistinctText
-import com.civic.epoxy.KotlinHolder
+import com.civic.epoxy.KotlinModel
 
-@EpoxyModelClass(layout = R.layout.fragment_home_item)
-abstract class HomeItemModel : EpoxyModelWithHolder<HomeItemModel.ViewHolder>() {
+data class HomeItemModel(private val data: HomeItem) : KotlinModel(R.layout.fragment_home_item) {
 
-    @EpoxyAttribute
-    lateinit var data: HomeItem
+    val image by bind<ImageView>(R.id.fragment_home_item_image)
+    val title by bind<TextView>(R.id.fragment_home_item_title_text)
 
-    override fun bind(holder: ViewHolder) {
-        holder.setData(data)
-    }
+    override fun bind() {
+        title.setDistinctText(data.text)
 
-    class ViewHolder: KotlinHolder() {
-
-        val image by bind<ImageView>(R.id.fragment_home_item_image)
-        val title by bind<TextView>(R.id.fragment_home_item_title_text)
-
-        fun setData(data: HomeItem) {
-            title.setDistinctText(data.text)
-
-            Glide.with(image)
-                .load(data.imageUrl)
-                .centerCrop()
-                .into(image)
-        }
+        Glide.with(image)
+            .load(data.imageUrl)
+            .centerCrop()
+            .into(image)
     }
 }
