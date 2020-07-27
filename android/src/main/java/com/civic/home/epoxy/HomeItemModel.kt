@@ -7,14 +7,15 @@ import com.bumptech.glide.Glide
 import com.civic.R
 import com.civic.common.android.setDistinctText
 import com.civic.epoxy.KotlinModel
+import com.civic.navigation.AppNavigation
 
-data class HomeItemModel(private val data: HomeItem) : KotlinModel(R.layout.fragment_home_item) {
+data class HomeItemModel(private val data: HomeItem, private val navigation: AppNavigation) : KotlinModel(R.layout.fragment_home_item) {
 
     val image by setData<ImageView>(R.id.fragment_home_item_image)
     val title by setData<TextView>(R.id.fragment_home_item_title_text)
 
-    override fun setData(view: View) {
-        view.setOnClickListener {
+    override fun setData(root: View) {
+        root.setOnClickListener {
 
         }
 
@@ -26,7 +27,7 @@ data class HomeItemModel(private val data: HomeItem) : KotlinModel(R.layout.frag
             .into(image)
     }
 
-    override fun reset(view: View) {
-        view.setOnClickListener(null)
+    override fun reset(root: View) {
+        root.setOnClickListener(null)
     }
 }

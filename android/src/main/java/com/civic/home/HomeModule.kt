@@ -20,12 +20,22 @@ object HomeModule {
 
         single<CoroutineScope> { fragment.lifecycleScope }
 
-        single { HomeEpoxyController() }
+        single { HomeEpoxyController(navigation = get()) }
 
-        single { HomePermissions(get()) }
+        single { HomePermissions(fragment = get()) }
 
-        single { HomeModel(get(), Dispatchers.IO, get(), get(), State(HomeState.Empty), get(), get()) }
+        single { HomeModel(coroutineScope = get(),
+            workerContext = Dispatchers.IO,
+            apolloClient = get(),
+            userLocationState = get(),
+            viewState = State(HomeState.Empty),
+            homePermissions = get(),
+            locationService = get()) }
 
-        single { HomeFragmentDelegate(get(), get(), get(), get(qualifier = named(HomeFragment.TAG)), get()) }
+        single { HomeFragmentDelegate(homePermissions = get(),
+            homeEpoxyController = get(),
+            fragment = get(),
+            lifecycle = get(qualifier = named(HomeFragment.TAG)),
+            homeModel = get()) }
     }
 }

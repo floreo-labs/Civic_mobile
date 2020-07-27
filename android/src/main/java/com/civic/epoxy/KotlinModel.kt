@@ -20,9 +20,9 @@ abstract class KotlinModel(
 
     private fun getView(): View = requireNotNull(view)
 
-    abstract fun setData(view: View)
+    abstract fun setData(root: View)
 
-    abstract fun reset(view: View)
+    abstract fun reset(root: View)
 
     override fun bind(view: View) {
         this.view = view
