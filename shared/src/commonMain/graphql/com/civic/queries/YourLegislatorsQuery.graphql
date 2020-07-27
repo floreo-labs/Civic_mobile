@@ -2,6 +2,7 @@ query YourLegislatorsQuery($latitude: Float!, $longitude: Float!) {
     legislators: people(latitude: $latitude, longitude: $longitude, first: 100) {
         edges {
             node {
+                id
                 name
                 image
                 chamber: currentMemberships(classification:["upper", "lower"]) {

@@ -80,6 +80,7 @@ class HomeModel(coroutineScope: CoroutineScope,
         HomeState.Success(legislators = data!!.legislators!!.edges.map { edge ->
             edge!!.node!!.run {
                 Legislator(
+                    id = id!!,
                     name = name!!,
                     imageUrl = image!!.replace("http://", "https://")
                 )
