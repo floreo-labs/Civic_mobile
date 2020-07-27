@@ -16,9 +16,8 @@ class HomeFragment: ComponentDelegateFragment(), KoinComponent {
         fun newInstance() = HomeFragment()
     }
 
-    override val module: Module by lazy {
-        HomeModule.create(this)
-    }
+    override fun createModule(): Module = HomeModule.create(this)
+
     override val delegate: ComponentDelegate by inject<HomeFragmentDelegate>()
 
     override val layoutId: Int

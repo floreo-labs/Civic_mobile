@@ -15,9 +15,8 @@ class OnboardingFragment : ComponentDelegateFragment(), KoinComponent {
     }
 
     override val delegate by inject<OnboardingFragmentDelegate>()
-    override val module: Module by lazy {
-        OnboardingModule.create()
-    }
+
+    override fun createModule(): Module = OnboardingModule.create()
 
     override val layoutId: Int
         get() = R.layout.fragment_onboarding

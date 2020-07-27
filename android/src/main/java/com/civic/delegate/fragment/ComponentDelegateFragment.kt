@@ -18,12 +18,15 @@ abstract class ComponentDelegateFragment : Fragment() {
 
     abstract val delegate: ComponentDelegate
 
-    abstract val module: Module
+    private lateinit var module: Module
 
     @get:LayoutRes
     abstract val layoutId: Int
 
+    abstract fun createModule(): Module
+
     override fun onAttach(context: Context) {
+        module = createModule()
         getKoin().loadModule(module)
         super.onAttach(context)
     }

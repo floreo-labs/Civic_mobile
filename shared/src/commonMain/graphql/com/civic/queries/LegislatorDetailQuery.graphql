@@ -1,0 +1,6 @@
+query LegislatorDetailQuery($id: ID!) {
+    person(id: $id) {
+        name
+        image
+    }
+}

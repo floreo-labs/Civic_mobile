@@ -7,6 +7,10 @@ object OnboardingModule {
 
     fun create() = module {
         single { OnboardingEpoxyController() }
-        single { OnboardingFragmentDelegate(get(), get(), get(), get()) }
+
+        single { OnboardingFragmentDelegate(onboardingEpoxyController = get(),
+            androidResources = get(),
+            sharedPreferences = get(),
+            navigator = get()) }
     }
 }

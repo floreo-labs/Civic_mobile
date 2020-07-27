@@ -32,7 +32,7 @@ class AppNavigator(private val supportFragmentManager: FragmentManager) : Naviga
     override fun showLegislatorDetail(legislator: Legislator) {
         supportFragmentManager.beginTransaction()
             .addToBackStack(LegislatorFragment.TAG)
-            .replace(R.id.activity_root_fragment_container, LegislatorFragment.newInstance(), LegislatorFragment.TAG)
+            .replace(R.id.activity_root_fragment_container, LegislatorFragment.newInstance(legislator), LegislatorFragment.TAG)
             .commit()
     }
 }

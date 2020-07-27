@@ -11,8 +11,6 @@ import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.civic.R
 import com.civic.common.android.extensions.setAllGone
@@ -27,7 +25,6 @@ class HomeFragmentDelegate(
     private val homePermissions: HomePermissions,
     private val homeEpoxyController: HomeEpoxyController,
     private val fragment: Fragment,
-    private val lifecycle: Lifecycle,
     private val homeModel: HomeModel
 ) : ComponentDelegate(), DefaultLifecycleObserver {
 
@@ -38,8 +35,6 @@ class HomeFragmentDelegate(
     private val enableLocationCta by register<View>(R.id.fragment_feed_empty_enable_location)
 
     override fun onViewsResolved(savedState: Bundle?) {
-        lifecycle.addObserver(this)
-
         homeModel.viewState { feedState ->
             when (feedState) {
                 HomeState.Empty -> showEmptyState()
@@ -60,10 +55,6 @@ class HomeFragmentDelegate(
 
     override fun onViewsCleared() {
         recycler.adapter = null
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
-        lifecycle.removeObserver(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

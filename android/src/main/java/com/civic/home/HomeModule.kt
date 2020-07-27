@@ -34,10 +34,11 @@ object HomeModule {
             homePermissions = get(),
             locationService = get()) }
 
-        single { HomeFragmentDelegate(homePermissions = get(),
+        single { HomeFragmentDelegate(
+            homePermissions = get(),
             homeEpoxyController = get(),
             fragment = get(qualifier = homeQualifier),
-            lifecycle = get(qualifier = homeQualifier),
-            homeModel = get()) }
+            homeModel = get()
+        ) }
     }
 }

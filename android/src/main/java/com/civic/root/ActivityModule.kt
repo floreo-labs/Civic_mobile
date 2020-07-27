@@ -2,8 +2,8 @@ package com.civic.root
 
 import android.app.Activity
 import com.civic.home.LocationService
-import com.civic.navigation.Navigator
 import com.civic.navigation.AppNavigator
+import com.civic.navigation.Navigator
 import org.koin.dsl.module
 
 object ActivityModule {
