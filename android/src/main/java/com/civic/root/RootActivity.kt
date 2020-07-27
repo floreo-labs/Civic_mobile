@@ -30,6 +30,16 @@ class RootActivity : AppCompatActivity() {
         supportFragmentManager.findFragmentById(R.id.activity_root_fragment_container)?.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onBackPressed() {
+        with (supportFragmentManager) {
+            if (backStackEntryCount > 0) {
+                popBackStack()
+            } else {
+                super.onBackPressed()
+            }
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
 

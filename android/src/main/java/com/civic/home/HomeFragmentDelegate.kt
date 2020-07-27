@@ -58,6 +58,10 @@ class HomeFragmentDelegate(
         }
     }
 
+    override fun onViewsCleared() {
+        recycler.adapter = null
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
         lifecycle.removeObserver(this)
     }

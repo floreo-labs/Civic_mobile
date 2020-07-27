@@ -51,9 +51,7 @@ class RootActivityDelegate(private val supportFragmentManager: FragmentManager,
         deviceLocation.stopLocationScan()
     }
 
-    override fun unbind() {
-        super.unbind()
-
+    override fun onViewsCleared() {
         lifecycle.removeObserver(this)
         lifecycleCallbacks?.let(supportFragmentManager::unregisterFragmentLifecycleCallbacks)
         deviceLocation.stopLocationScan()

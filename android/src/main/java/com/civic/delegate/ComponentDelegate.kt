@@ -13,6 +13,10 @@ abstract class ComponentDelegate {
 
     }
 
+    protected open fun onViewsCleared() {
+
+    }
+
     protected fun <ViewType: View> register(@IdRes viewId: Int) =
         ViewPropertyDelegate<ViewType>(viewId).also {
             viewPropertyDelegateRegistry.add(it)
@@ -25,11 +29,12 @@ abstract class ComponentDelegate {
         onViewsResolved(savedState)
     }
 
-    open fun unbind() {
+    fun unbind() {
+        onViewsCleared()
+
         viewPropertyDelegateRegistry.forEach { viewPropertyDelegate ->
             viewPropertyDelegate.clear()
         }
-        viewPropertyDelegateRegistry.clear()
     }
 
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
