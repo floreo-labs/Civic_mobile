@@ -12,7 +12,7 @@ import com.civic.R
 import com.civic.common.android.CommonAnimations
 import com.civic.delegate.ComponentDelegate
 import com.civic.home.LocationService
-import com.civic.navigation.AppNavigation
+import com.civic.navigation.Navigator
 import com.civic.onboarding.OnboardingConstants
 import com.civic.onboarding.OnboardingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,7 +22,7 @@ class RootActivityDelegate(private val supportFragmentManager: FragmentManager,
                            private val deviceLocation: LocationService,
                            private val fadeAnimation: CommonAnimations,
                            private val sharedPreferences: SharedPreferences,
-                           private val appNavigation: AppNavigation) : ComponentDelegate(), DefaultLifecycleObserver {
+                           private val navigator: Navigator) : ComponentDelegate(), DefaultLifecycleObserver {
 
     private val bottomNav by register<BottomNavigationView>(R.id.activity_root_bottom_nav)
     private val toolbar by register<Toolbar>(R.id.activity_root_toolbar)
@@ -33,9 +33,9 @@ class RootActivityDelegate(private val supportFragmentManager: FragmentManager,
         lifecycle.addObserver(this)
         if (savedState == null) {
             if (sharedPreferences.getBoolean(OnboardingConstants.HAS_SEEN_TUTORIAL, false)) {
-                appNavigation.showFeed()
+                navigator.showFeed()
             } else {
-                appNavigation.showOnboarding()
+                navigator.showOnboarding()
             }
 
             initBottomNavBar()

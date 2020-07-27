@@ -4,9 +4,10 @@ import androidx.fragment.app.FragmentManager
 import com.civic.R
 import com.civic.domain.Legislator
 import com.civic.home.HomeFragment
+import com.civic.legislator.LegislatorFragment
 import com.civic.onboarding.OnboardingFragment
 
-class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNavigation {
+class AppNavigator(private val supportFragmentManager: FragmentManager) : Navigator {
 
     override fun showOnboarding() {
         supportFragmentManager.beginTransaction()
@@ -29,6 +30,9 @@ class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNav
     }
 
     override fun showLegislatorDetail(legislator: Legislator) {
-
+        supportFragmentManager.beginTransaction()
+            .disallowAddToBackStack()
+            .replace(R.id.activity_root_fragment_container, LegislatorFragment.newInstance(), LegislatorFragment.TAG)
+            .commit()
     }
 }

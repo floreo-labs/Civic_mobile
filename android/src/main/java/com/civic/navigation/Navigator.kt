@@ -2,7 +2,7 @@ package com.civic.navigation
 
 import com.civic.domain.Legislator
 
-interface AppNavigation {
+interface Navigator {
 
     fun showOnboarding()
 

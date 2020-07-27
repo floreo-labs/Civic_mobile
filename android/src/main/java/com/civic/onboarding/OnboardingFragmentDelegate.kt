@@ -7,7 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.civic.R
 import com.civic.common.android.AndroidResources
 import com.civic.delegate.ComponentDelegate
-import com.civic.navigation.AppNavigation
+import com.civic.navigation.Navigator
 import com.civic.onboarding.epoxy.OnboardingEpoxyController
 import com.civic.onboarding.epoxy.OnboardingItemData
 import com.civic.widget.ViewPagerDots
@@ -16,7 +16,7 @@ class OnboardingFragmentDelegate(
     private val onboardingEpoxyController: OnboardingEpoxyController,
     private val androidResources: AndroidResources,
     private val sharedPreferences: SharedPreferences,
-    private val navigator: AppNavigation
+    private val navigator: Navigator
 ) : ComponentDelegate() {
 
     private val viewPager by register<ViewPager2>(R.id.onboarding_view_pager)

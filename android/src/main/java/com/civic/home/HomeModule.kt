@@ -14,17 +14,19 @@ import org.koin.dsl.module
 object HomeModule {
 
     fun create(fragment: Fragment) = module {
-        single { fragment }
+        val homeQualifier = named(HomeFragment.TAG)
 
-        single(qualifier = named(HomeFragment.TAG)) { fragment.lifecycle }
+        single(qualifier = homeQualifier) { fragment }
 
-        single<CoroutineScope> { fragment.lifecycleScope }
+        single(qualifier = homeQualifier) { fragment.lifecycle }
+
+        single<CoroutineScope>(qualifier = homeQualifier) { fragment.lifecycleScope }
 
         single { HomeEpoxyController(navigation = get()) }
 
-        single { HomePermissions(fragment = get()) }
+        single { HomePermissions(fragment = get(qualifier = homeQualifier)) }
 
-        single { HomeModel(coroutineScope = get(),
+        single { HomeModel(coroutineScope = get(qualifier = homeQualifier),
             workerContext = Dispatchers.IO,
             apolloClient = get(),
             userLocationState = get(),
@@ -34,8 +36,8 @@ object HomeModule {
 
         single { HomeFragmentDelegate(homePermissions = get(),
             homeEpoxyController = get(),
-            fragment = get(),
-            lifecycle = get(qualifier = named(HomeFragment.TAG)),
+            fragment = get(qualifier = homeQualifier),
+            lifecycle = get(qualifier = homeQualifier),
             homeModel = get()) }
     }
 }
