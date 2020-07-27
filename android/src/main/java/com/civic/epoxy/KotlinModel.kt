@@ -18,20 +18,25 @@ abstract class KotlinModel(
 
     private var view: View? = null
 
-    abstract fun bind()
+    private fun getView(): View = requireNotNull(view)
+
+    abstract fun setData(view: View)
+
+    abstract fun reset(view: View)
 
     override fun bind(view: View) {
         this.view = view
-        bind()
+        setData(view)
     }
 
     override fun unbind(view: View) {
+        reset(getView())
         this.view = null
     }
 
     override fun getDefaultLayout() = layoutRes
 
-    protected fun <V : View> bind(@IdRes id: Int) = object : ReadOnlyProperty<KotlinModel, V> {
+    protected fun <V : View> setData(@IdRes id: Int) = object : ReadOnlyProperty<KotlinModel, V> {
         override fun getValue(thisRef: KotlinModel, property: KProperty<*>): V {
             // This is not efficient because it looks up the view by id every time (it loses
             // the pattern of a "holder" to cache that look up). But it is simple to use and could
