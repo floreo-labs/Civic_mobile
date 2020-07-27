@@ -22,7 +22,7 @@ abstract class KotlinModel(
 
     abstract fun setData(root: View)
 
-    abstract fun reset(root: View)
+    open fun reset(root: View) { }
 
     override fun bind(view: View) {
         this.view = view

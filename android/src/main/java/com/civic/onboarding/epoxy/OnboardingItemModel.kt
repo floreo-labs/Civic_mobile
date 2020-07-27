@@ -1,5 +1,6 @@
 package com.civic.onboarding.epoxy
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.civic.R
@@ -12,7 +13,7 @@ data class OnboardingItemModel(private val data: OnboardingItemData): KotlinMode
     val title by setData<TextView>(R.id.fragment_onboarding_item_title)
     val body by setData<TextView>(R.id.fragment_onboarding_item_body)
 
-    override fun setData() {
+    override fun setData(root: View) {
         image.setImageResource(data.drawableRes)
         title.setDistinctText(data.titleText)
         body.setDistinctText(data.bodyText)

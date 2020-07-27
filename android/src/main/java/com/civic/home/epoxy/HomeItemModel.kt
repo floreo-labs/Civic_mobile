@@ -6,10 +6,11 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.civic.R
 import com.civic.common.android.setDistinctText
+import com.civic.domain.Legislator
 import com.civic.epoxy.KotlinModel
 import com.civic.navigation.AppNavigation
 
-data class HomeItemModel(private val data: HomeItem, private val navigation: AppNavigation) : KotlinModel(R.layout.fragment_home_item) {
+data class HomeItemModel(private val data: Legislator, private val navigation: AppNavigation) : KotlinModel(R.layout.fragment_home_item) {
 
     val image by setData<ImageView>(R.id.fragment_home_item_image)
     val title by setData<TextView>(R.id.fragment_home_item_title_text)
@@ -19,7 +20,7 @@ data class HomeItemModel(private val data: HomeItem, private val navigation: App
 
         }
 
-        title.setDistinctText(data.text)
+        title.setDistinctText(data.name)
 
         Glide.with(image)
             .load(data.imageUrl)

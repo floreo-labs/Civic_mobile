@@ -22,7 +22,6 @@ import com.civic.extensions.exhaust
 import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
 import com.civic.home.epoxy.HomeEpoxyController
-import com.civic.home.epoxy.HomeItem
 
 class HomeFragmentDelegate(
     private val homePermissions: HomePermissions,
@@ -103,13 +102,7 @@ class HomeFragmentDelegate(
 
         loading.isVisible = false
 
-        val items = sucesss.legislators.map { legislator ->
-            HomeItem(
-                imageUrl = legislator.imageUrl,
-                text = legislator.name
-            )
-        }
-        homeEpoxyController.setData(items)
+        homeEpoxyController.setData(sucesss.legislators)
     }
 
     private fun showPermissionsUI() {
