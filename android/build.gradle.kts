@@ -54,19 +54,19 @@ dependencies {
     implementation("org.koin:koin-androidx-fragment:2.1.6")
 
     // ANDROID
-    implementation("androidx.appcompat:appcompat:1.1.0")
-    implementation("androidx.core:core-ktx:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-beta6")
-    implementation("com.google.android.material:material:1.1.0")
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.core:core-ktx:1.3.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("com.google.android.material:material:1.2.1")
     implementation("com.android.support:support-annotations:28.0.0")
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
     implementation("com.airbnb.android:epoxy:4.0.0-beta4")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-alpha03")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01")
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
     // LOCATION
-    implementation("com.google.android.gms:play-services-location:17.0.0")
+    implementation("com.google.android.gms:play-services-location:17.1.0")
 
     // DEBUG
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.3")
