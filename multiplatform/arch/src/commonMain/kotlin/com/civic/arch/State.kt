@@ -3,13 +3,13 @@ package com.civic.arch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class State<T>(initial: T?) {
+open class State<T>(initial: T) {
 
     private val mutableStateFlow = MutableStateFlow(initial)
 
-    val flow: StateFlow<T?> = mutableStateFlow
+    val flow: StateFlow<T> = mutableStateFlow
 
-    val value: T?
+    val value: T
         get() = mutableStateFlow.value
 
     operator fun plusAssign(value: T) {

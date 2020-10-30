@@ -21,7 +21,7 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name="com.civic.root.RootActivity"
+            android:name="com.civic.activity.CivicActivity"
             android:theme="@style/AppTheme" >
 
             <intent-filter>

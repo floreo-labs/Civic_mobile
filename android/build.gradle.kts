@@ -45,6 +45,8 @@ android {
 dependencies {
     implementation(project(":multiplatform:common"))
     implementation(project(":multiplatform:arch"))
+    implementation(project(":multiplatform:navigation"))
+    implementation(project(":multiplatform:preferences"))
     implementation(project(":multiplatform:feature:home"))
 
     // KOTLIN
@@ -62,6 +64,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
     implementation("com.airbnb.android:epoxy:4.0.0-beta4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01")
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 

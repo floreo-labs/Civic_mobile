@@ -2,7 +2,7 @@ package com.civic.navigation
 
 interface AppNavigation {
 
-    fun showOnboarding()
+    fun showAuth()
 
     fun showFeed()
 }

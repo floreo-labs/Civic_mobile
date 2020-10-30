@@ -49,8 +49,6 @@ kotlin {
 
                 implementation(project(":multiplatform:arch"))
                 implementation(project(":multiplatform:common"))
-
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
             }
         }
 

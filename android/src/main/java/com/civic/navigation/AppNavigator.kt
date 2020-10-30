@@ -2,12 +2,12 @@ package com.civic.navigation
 
 import androidx.fragment.app.FragmentManager
 import com.civic.R
-import com.civic.home.HomeFragment
-import com.civic.onboarding.OnboardingFragment
+import com.civic.feature.home.HomeFragment
+import com.civic.feature.onboarding.OnboardingFragment
 
 class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNavigation {
 
-    override fun showOnboarding() {
+    override fun showAuth() {
         supportFragmentManager.beginTransaction()
             .disallowAddToBackStack()
             .add(R.id.activity_root_fragment_container, OnboardingFragment.newInstance(), OnboardingFragment.TAG)

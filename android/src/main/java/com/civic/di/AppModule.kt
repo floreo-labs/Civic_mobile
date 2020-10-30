@@ -1,13 +1,12 @@
 package com.civic.di
 
-import com.civic.BuildConfig
-import com.civic.arch.State
-import com.civic.home.domain.UserLocation
+import com.civic.arch.NullableState
+import com.civic.feature.home.domain.UserLocation
 import org.koin.dsl.module
 
 object AppModule {
 
     fun create() = module {
-        single { State<UserLocation?>(null) }
+        single { NullableState<UserLocation?>(null) }
     }
 }
