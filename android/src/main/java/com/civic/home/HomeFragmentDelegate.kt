@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.civic.R
 import com.civic.common.android.extensions.setAllGone
 import com.civic.common.android.extensions.setAllVisible
+import com.civic.common.extensions.exhaust
 import com.civic.delegate.ComponentDelegate
-import com.civic.extensions.exhaust
 import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
 import com.civic.home.epoxy.HomeEpoxyController

@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
     id("koin")
 }
 
@@ -43,12 +42,10 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(":multiplatform:common"))
+    implementation(project(":multiplatform:arch"))
+    implementation(project(":multiplatform:feature:home"))
 
     // KOTLIN
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
@@ -70,6 +67,7 @@ dependencies {
 
     // GRAPH
     implementation("com.apollographql.apollo:apollo-normalized-cache-sqlite:2.2.1")
+    implementation("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
 
     // LOCATION
     implementation("com.google.android.gms:play-services-location:17.0.0")

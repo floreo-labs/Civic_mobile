@@ -5,7 +5,7 @@ import com.apollographql.apollo.network.ApolloHttpNetworkTransport
 import com.apollographql.apollo.network.HttpMethod
 import com.civic.BuildConfig
 import com.civic.arch.State
-import com.civic.domain.UserLocation
+import com.civic.home.domain.UserLocation
 import org.koin.dsl.module
 
 object AppModule {

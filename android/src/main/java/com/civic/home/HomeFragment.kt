@@ -1,9 +1,9 @@
 package com.civic.home
 
 import com.civic.R
+import com.civic.common.extensions.nonNullSimpleName
 import com.civic.delegate.ComponentDelegate
 import com.civic.delegate.fragment.ComponentDelegateFragment
-import com.civic.extensions.nonNullSimpleName
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.module.Module
