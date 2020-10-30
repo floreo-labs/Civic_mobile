@@ -21,7 +21,7 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
-                implementation(kotlin("stdlib-jdk7"))
+                implementation(kotlin("stdlib-jdk8"))
             }
         }
     }

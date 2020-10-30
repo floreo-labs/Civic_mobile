@@ -48,7 +48,7 @@ dependencies {
     implementation(project(":multiplatform:feature:home"))
 
     // KOTLIN
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72")
     implementation("org.koin:koin-core:2.1.6")
     implementation("org.koin:koin-androidx-scope:2.1.6")
     implementation("org.koin:koin-androidx-fragment:2.1.6")
