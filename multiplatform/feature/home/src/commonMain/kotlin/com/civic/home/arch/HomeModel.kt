@@ -11,7 +11,7 @@ class HomeModel(coroutineScope: CoroutineScope,
                 private val viewState: State<HomeState>,
                 private val homePermissions: HomePermissions,
                 private val locationService: LocationService
-) : StateModel(coroutineScope) {
+) : StateModel() {
 
     fun viewState(onStateUpdate: suspend (HomeState) -> Unit) {
         consumeLocationState()
