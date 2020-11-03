@@ -16,6 +16,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("stdlib-common"))
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.0")
+                implementation(project(":multiplatform:preferences"))
                 api(kotlin("test-common"))
                 api(kotlin("test-annotations-common"))
             }

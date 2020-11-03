@@ -1,6 +1,6 @@
 package com.civic.preferences
 
-expect class Preferences(name: String? = null) {
+interface Preferences {
 
     fun setInt(key: String, value: Int)
     fun getInt(key: String, defaultValue: Int): Int

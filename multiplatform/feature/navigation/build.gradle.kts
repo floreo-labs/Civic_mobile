@@ -49,6 +49,12 @@ kotlin {
                 implementation(project(":multiplatform:preferences"))
             }
         }
+
+        val commonTest by getting {
+            dependencies {
+                implementation(project(":multiplatform:test"))
+            }
+        }
     }
 }
 
