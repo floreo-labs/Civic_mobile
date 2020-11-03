@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("com.apollographql.apollo").version("2.2.1")
 }
 
 android {
@@ -49,6 +50,10 @@ kotlin {
 
                 implementation(project(":multiplatform:arch"))
                 implementation(project(":multiplatform:common"))
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
+
+                implementation("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
             }
         }
 

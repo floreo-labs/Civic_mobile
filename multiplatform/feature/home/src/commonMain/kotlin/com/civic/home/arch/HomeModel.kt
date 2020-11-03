@@ -39,5 +39,6 @@ class HomeModel(coroutineScope: CoroutineScope,
     }
 
     private fun consumeLocationState() {
+
     }
 }
