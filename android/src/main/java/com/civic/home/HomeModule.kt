@@ -7,7 +7,6 @@ import com.civic.home.arch.HomeModel
 import com.civic.home.arch.HomeState
 import com.civic.home.epoxy.HomeEpoxyController
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
@@ -24,7 +23,7 @@ object HomeModule {
 
         single { HomePermissions(get()) }
 
-        single { HomeModel(get(), Dispatchers.IO, get(), get(), State(HomeState.Empty), get(), get()) }
+        single { HomeModel(get(), State(HomeState.Empty), get(), get()) }
 
         single { HomeFragmentDelegate(get(), get(), get(), get(qualifier = named(HomeFragment.TAG)), get()) }
     }
