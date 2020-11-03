@@ -65,10 +65,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 
-    // GRAPH
-    implementation("com.apollographql.apollo:apollo-normalized-cache-sqlite:2.2.1")
-    implementation("com.apollographql.apollo:apollo-runtime-kotlin:2.2.1")
-
     // LOCATION
     implementation("com.google.android.gms:play-services-location:17.1.0")
 
