@@ -1,32 +1,35 @@
 package com.civic.onboarding
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import androidx.viewpager2.widget.ViewPager2
 import com.civic.R
 import com.civic.common.android.AndroidResources
 import com.civic.delegate.ComponentDelegate
-import com.civic.navigation.AppNavigation
+import com.civic.navigation.NavigationData
+import com.civic.navigation.NavigationModel
 import com.civic.onboarding.epoxy.OnboardingEpoxyController
 import com.civic.onboarding.epoxy.OnboardingItemData
+import com.civic.preferences.Preferences
+import com.civic.preferences.PreferencesConstants
 import com.civic.widget.ViewPagerDots
 
 class OnboardingFragmentDelegate(
     private val onboardingEpoxyController: OnboardingEpoxyController,
     private val androidResources: AndroidResources,
-    private val sharedPreferences: SharedPreferences,
-    private val navigator: AppNavigation
+    private val preferences: Preferences,
+    private val navigationModel: NavigationModel
 ) : ComponentDelegate() {
 
     private val viewPager by register<ViewPager2>(R.id.onboarding_view_pager)
     private val viewPagerDots by register<ViewPagerDots>(R.id.onboarding_view_pager_dots)
     private val doneButton by register<Button>(R.id.onboarding_done_button)
     
-    override fun onViewsResolved(savedState: Bundle?) {
+    override fun onViewAttached(savedState: Bundle?) {
         doneButton.setOnClickListener {
-            sharedPreferences.edit().putBoolean(OnboardingConstants.HAS_SEEN_TUTORIAL, true).commit()
-            navigator.showFeed()
+            preferences.setString(PreferencesConstants.SAVED_USER_KEY, "BRO")
+
+            navigationModel.pushState(NavigationData.Home)
         }
 
         viewPager.adapter = onboardingEpoxyController.adapter

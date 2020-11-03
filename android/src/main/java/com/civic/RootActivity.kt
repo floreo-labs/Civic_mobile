@@ -21,7 +21,7 @@ class RootActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_root)
 
-        delegate.bind(findViewById(R.id.activity_root), savedInstanceState)
+        delegate.bindViews(findViewById(R.id.activity_root), savedInstanceState)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -33,6 +33,6 @@ class RootActivity : AppCompatActivity() {
         super.onDestroy()
 
         getKoin().unloadModule(module)
-        delegate.unbind()
+        delegate.onViewDetached()
     }
 }

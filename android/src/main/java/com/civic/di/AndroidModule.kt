@@ -4,6 +4,7 @@ import android.content.Context
 import android.location.LocationManager
 import com.civic.common.android.AndroidResources
 import com.civic.common.android.CommonAnimations
+import com.civic.preferences.Preferences
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -14,7 +15,7 @@ object AndroidModule {
 
         single { androidContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager }
 
-        single { androidContext().getSharedPreferences("Civic", Context.MODE_PRIVATE) }
+        single { Preferences("Civic") }
 
         factory { CommonAnimations() }
     }

@@ -45,6 +45,7 @@ android {
 dependencies {
     implementation(project(":multiplatform:common"))
     implementation(project(":multiplatform:arch"))
+    implementation(project(":multiplatform:preferences"))
     implementation(project(":multiplatform:feature:home"))
     implementation(project(":multiplatform:feature:navigation"))
 

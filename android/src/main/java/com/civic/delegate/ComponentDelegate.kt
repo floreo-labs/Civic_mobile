@@ -9,7 +9,7 @@ abstract class ComponentDelegate {
 
     private val viewPropertyDelegateRegistry: MutableList<ViewPropertyDelegate<*>> = mutableListOf()
 
-    protected open fun onViewsResolved(savedState: Bundle?) {
+    protected open fun onViewAttached(savedState: Bundle?) {
 
     }
 
@@ -18,14 +18,14 @@ abstract class ComponentDelegate {
             viewPropertyDelegateRegistry.add(it)
         }
 
-    fun bind(root: View, savedState: Bundle?) {
+    fun bindViews(root: View, savedState: Bundle?) {
         viewPropertyDelegateRegistry.forEach { viewPropertyDelegate ->
             viewPropertyDelegate.resolve(root)
         }
-        onViewsResolved(savedState)
+        onViewAttached(savedState)
     }
 
-    open fun unbind() {
+    open fun onViewDetached() {
         viewPropertyDelegateRegistry.forEach { viewPropertyDelegate ->
             viewPropertyDelegate.clear()
         }

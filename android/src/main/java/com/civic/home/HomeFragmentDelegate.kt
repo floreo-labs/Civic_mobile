@@ -38,7 +38,7 @@ class HomeFragmentDelegate(
     private val root by register<ConstraintLayout>(R.id.fragment_feed_root)
     private val enableLocationCta by register<View>(R.id.fragment_feed_empty_enable_location)
 
-    override fun onViewsResolved(savedState: Bundle?) {
+    override fun onViewAttached(savedState: Bundle?) {
         lifecycle.addObserver(this)
 
         homeModel.viewState { feedState ->

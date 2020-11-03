@@ -30,7 +30,7 @@ abstract class ComponentDelegateFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(layoutId, container, false).also { view ->
-            delegate.bind(view, savedInstanceState)
+            delegate.bindViews(view, savedInstanceState)
         }
 
     override fun onDestroy() {
@@ -41,7 +41,7 @@ abstract class ComponentDelegateFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        delegate.unbind()
+        delegate.onViewDetached()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
