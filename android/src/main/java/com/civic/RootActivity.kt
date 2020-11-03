@@ -1,9 +1,8 @@
-package com.civic.root
+package com.civic
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.civic.R
 import com.civic.di.extensions.loadModule
 import com.civic.di.extensions.unloadModule
 import org.koin.android.ext.android.getKoin

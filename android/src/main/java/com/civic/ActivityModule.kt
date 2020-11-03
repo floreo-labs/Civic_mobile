@@ -1,4 +1,4 @@
-package com.civic.root
+package com.civic
 
 import android.app.Activity
 import com.civic.home.LocationService

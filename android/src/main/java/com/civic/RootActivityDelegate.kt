@@ -1,4 +1,4 @@
-package com.civic.root
+package com.civic
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import com.civic.R
 import com.civic.common.android.CommonAnimations
 import com.civic.delegate.ComponentDelegate
 import com.civic.home.LocationService
