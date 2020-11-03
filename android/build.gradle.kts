@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":multiplatform:common"))
     implementation(project(":multiplatform:arch"))
     implementation(project(":multiplatform:feature:home"))
+    implementation(project(":multiplatform:feature:navigation"))
 
     // KOTLIN
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72")
