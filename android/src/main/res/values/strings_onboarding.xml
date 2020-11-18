@@ -11,6 +11,10 @@
 				Opt-in for reminders about when/where to vote and information on who\'s running
 		</string>
 		
-		<string name="onboarding_finished">Get Started</string>
-		
+		<string name="onboarding_signup">Sign Up</string>
+		<string name="onboarding_login">Log In</string>
+		<string name="onboarding_prompt_text">Don\'t want to make an account? %s</string>
+		<string name="onboarding_prompt_link">Go Anonymous</string>
+
+		<string name="onboarding_logo_content_desc">Logo for Civic</string>
 </resources>

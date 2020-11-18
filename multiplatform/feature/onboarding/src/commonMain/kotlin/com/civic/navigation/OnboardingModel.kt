@@ -1,0 +1,19 @@
+package com.civic.navigation
+
+import com.civic.arch.NullableState
+import com.civic.arch.StateModel
+
+class OnboardingModel(private val onboardingState: NullableState<OnboardingData>) : StateModel() {
+
+    fun signup() {
+        onboardingState += OnboardingData.SignUp
+    }
+
+    fun login() {
+        onboardingState += OnboardingData.Login
+    }
+
+    fun anonymous() {
+        onboardingState += OnboardingData.Anonymous
+    }
+}

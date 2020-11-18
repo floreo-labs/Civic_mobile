@@ -1,42 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
-		
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools">
+
 		<androidx.viewpager2.widget.ViewPager2
-				android:id="@+id/onboarding_view_pager"
-				android:layout_width="0dp"
-				android:layout_height="0dp"
-				android:orientation="horizontal"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				app:layout_constraintBottom_toBottomOf="parent" />
+			android:id="@+id/onboarding_view_pager"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintHeight_percent=".65"
+			android:orientation="horizontal"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 		
 		<com.google.android.material.button.MaterialButton
-				android:id="@+id/onboarding_done_button"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="@dimen/spacing_huge"
-				android:layout_marginBottom="@dimen/spacing_large"
-				android:text="@string/onboarding_finished"
-				app:layout_constraintBottom_toTopOf="@+id/onboarding_view_pager_dots"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toRightOf="parent" />
-		
+			android:id="@+id/onboarding_signup"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_medium"
+			android:text="@string/onboarding_signup"
+			app:layout_constraintTop_toBottomOf="@+id/onboarding_view_pager"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent" />
+
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/onboarding_login"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_medium"
+			android:text="@string/onboarding_login"
+			app:layout_constraintTop_toBottomOf="@+id/onboarding_signup"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent" />
+
+		<TextView
+			android:id="@+id/onboarding_prompt"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_medium"
+			android:gravity="center"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/onboarding_login"
+			tools:text="@string/onboarding_prompt_text" />
+
 		<com.civic.widget.ViewPagerDots
-				android:id="@+id/onboarding_view_pager_dots"
-				android:layout_width="0dp"
-				android:layout_height="@dimen/fragment_onboarding_dots_view_size"
-				android:layout_marginBottom="@dimen/spacing_medium"
-				app:layout_constraintLeft_toLeftOf="parent"
-				app:layout_constraintRight_toRightOf="parent"
-				app:layout_constraintBottom_toBottomOf="@+id/onboarding_view_pager"
-				app:activeDotSize="@dimen/fragment_onboarding_active_dot_size"
-				app:inactiveDotSize="@dimen/fragment_onboarding_inactive_dot_size" />
+			android:id="@+id/onboarding_view_pager_dots"
+			android:layout_width="0dp"
+			android:layout_height="@dimen/fragment_onboarding_dots_view_size"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/onboarding_login"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:activeDotSize="@dimen/fragment_onboarding_active_dot_size"
+			app:inactiveDotSize="@dimen/fragment_onboarding_inactive_dot_size" />
 				
 
 </androidx.constraintlayout.widget.ConstraintLayout>

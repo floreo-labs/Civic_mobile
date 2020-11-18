@@ -48,6 +48,7 @@ dependencies {
     implementation(project(":multiplatform:preferences"))
     implementation(project(":multiplatform:feature:home"))
     implementation(project(":multiplatform:feature:navigation"))
+    implementation(project(":multiplatform:feature:onboarding"))
 
     // KOTLIN
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72")
