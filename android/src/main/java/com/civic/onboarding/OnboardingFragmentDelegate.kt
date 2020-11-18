@@ -10,14 +10,14 @@ import com.civic.navigation.NavigationData
 import com.civic.navigation.NavigationModel
 import com.civic.onboarding.epoxy.OnboardingEpoxyController
 import com.civic.onboarding.epoxy.OnboardingItemData
-import com.civic.preferences.AndroidPreferences
+import com.civic.preferences.Preferences
 import com.civic.preferences.PreferencesConstants
 import com.civic.widget.ViewPagerDots
 
 class OnboardingFragmentDelegate(
     private val onboardingEpoxyController: OnboardingEpoxyController,
     private val androidResources: AndroidResources,
-    private val preferences: AndroidPreferences,
+    private val preferences: Preferences,
     private val navigationModel: NavigationModel
 ) : ComponentDelegate() {
 
