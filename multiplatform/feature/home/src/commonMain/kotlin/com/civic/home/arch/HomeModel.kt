@@ -26,16 +26,16 @@ class HomeModel(coroutineScope: CoroutineScope,
         } else {
             HomeState.ShowPermissionUI
         }
-        viewState += newState
+        viewState.update(newState)
     }
 
     fun getCurrentLocation() {
         locationService.startLocationScan()
-        viewState += HomeState.Loading
+        viewState.update(HomeState.Loading)
     }
 
     fun onPermissionDenied() {
-        viewState += HomeState.Empty
+        viewState.update(HomeState.Empty)
     }
 
     private fun consumeLocationState() {

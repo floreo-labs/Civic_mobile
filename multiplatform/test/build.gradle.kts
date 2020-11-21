@@ -19,6 +19,7 @@ kotlin {
                 implementation(project(":multiplatform:preferences"))
                 api(kotlin("test-common"))
                 api(kotlin("test-annotations-common"))
+                api("app.cash.turbine:turbine:0.2.1")
             }
         }
 

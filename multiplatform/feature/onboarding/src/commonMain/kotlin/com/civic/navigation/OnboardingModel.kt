@@ -6,14 +6,14 @@ import com.civic.arch.StateModel
 class OnboardingModel(private val onboardingState: NullableState<OnboardingData>) : StateModel() {
 
     fun signup() {
-        onboardingState += OnboardingData.SignUp
+        onboardingState.update(OnboardingData.SignUp)
     }
 
     fun login() {
-        onboardingState += OnboardingData.Login
+        onboardingState.update(OnboardingData.Login)
     }
 
     fun anonymous() {
-        onboardingState += OnboardingData.Anonymous
+        onboardingState.update(OnboardingData.Anonymous)
     }
 }

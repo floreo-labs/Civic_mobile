@@ -129,7 +129,7 @@ actual class LocationService(private val locationManager: LocationManager,
         val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
         if (addresses.isNotEmpty()) {
             val sharedAddress = addresses.first().run(this::toSharedAddress)
-            userLocationState += sharedAddress
+            userLocationState.update(sharedAddress)
         }
     }
 

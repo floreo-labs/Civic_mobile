@@ -14,13 +14,13 @@ class NavigationModel(private val preferences: Preferences,
 
         if (preferences.getString(PreferencesConstants.SAVED_USER_KEY).isNullOrBlank()) {
             if (preferences.getBoolean(PreferencesConstants.IS_ANONYMOUS_USER) == true) {
-                navigationState.plusAssign(NavigationData.Home)
+                navigationState.update(NavigationData.Home)
             } else {
-                navigationState.plusAssign(NavigationData.Auth)
+                navigationState.update(NavigationData.Auth)
             }
         } else {
             // get user, set state, go to home
-            navigationState.plusAssign(NavigationData.Home)
+            navigationState.update(NavigationData.Home)
         }
     }
 
@@ -28,7 +28,7 @@ class NavigationModel(private val preferences: Preferences,
         collectWith(navigationState.flow.filterNotNull(), action)
     }
 
-    fun pushState(navigationData: NavigationData?) {
-        navigationState += navigationData
+    fun pushState(navigationData: NavigationData) {
+        navigationState.update(navigationData)
     }
 }
