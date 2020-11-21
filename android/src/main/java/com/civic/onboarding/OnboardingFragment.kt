@@ -84,6 +84,11 @@ class OnboardingFragment : KoinFragment() {
     private fun createOnboardingItems() : List<OnboardingItemData> =
         listOf(
             OnboardingItemData(
+                drawableRes = R.drawable.ic_app_logo,
+                titleText = getString(R.string.onboarding_welcome_prompt),
+                bodyText =  getString(R.string.onboarding_welcome_message)
+            ),
+            OnboardingItemData(
                 drawableRes = R.drawable.vector_drawable_home_black_24dp,
                 titleText = getString(R.string.home),
                 bodyText =  getString(R.string.onboarding_item_data_feed_description)

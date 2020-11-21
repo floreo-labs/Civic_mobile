@@ -17,4 +17,7 @@
 		<string name="onboarding_prompt_link">Go Anonymous</string>
 
 		<string name="onboarding_logo_content_desc">Logo for Civic</string>
+
+	<string name="onboarding_welcome_prompt">Welcome to Civic.</string>
+	<string name="onboarding_welcome_message">Swipe to learn more.</string>
 </resources>

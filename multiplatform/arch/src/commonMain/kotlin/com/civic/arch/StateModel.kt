@@ -16,7 +16,7 @@ open class StateModel {
         flow.onEach(action)
             .launchIn(scope)
 
-    fun destroy() {
+    open fun destroy() {
         scope.cancel()
     }
 }
