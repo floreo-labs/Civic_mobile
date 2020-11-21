@@ -27,8 +27,6 @@ object ActivityModule {
                 navigationState = NullableState(null)
             )
         }
-
-        single { RootActivityDelegate(lifecycle = get(), deviceLocation = get(), navigationModel = get(), appNavigation = get()) }
     }
 }
 

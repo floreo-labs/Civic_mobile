@@ -12,16 +12,15 @@ import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.civic.R
 import com.civic.common.android.HighlightableClickableSpan
-import com.civic.delegate.fragment.KoinFragment
+import com.civic.common.android.fragment.KoinFragment
 import com.civic.navigation.OnboardingModel
 import com.civic.onboarding.epoxy.OnboardingEpoxyController
 import com.civic.onboarding.epoxy.OnboardingItemData
 import com.civic.widget.ViewPagerDots
-import org.koin.core.KoinComponent
 import org.koin.core.inject
 import org.koin.core.module.Module
 
-class OnboardingFragment : KoinFragment(), KoinComponent {
+class OnboardingFragment : KoinFragment() {
 
     companion object {
         val TAG = OnboardingFragment::class.simpleName

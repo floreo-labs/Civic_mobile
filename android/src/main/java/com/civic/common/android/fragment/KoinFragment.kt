@@ -1,13 +1,13 @@
-package com.civic.delegate.fragment
+package com.civic.common.android.fragment
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.civic.di.extensions.loadModule
 import com.civic.di.extensions.unloadModule
-import org.koin.android.ext.android.getKoin
+import org.koin.core.KoinComponent
 import org.koin.core.module.Module
 
-abstract class KoinFragment : Fragment() {
+abstract class KoinFragment : Fragment(), KoinComponent {
 
     abstract val module: Module
 
