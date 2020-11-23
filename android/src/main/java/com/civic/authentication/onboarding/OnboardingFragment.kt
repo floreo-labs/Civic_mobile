@@ -79,7 +79,7 @@ class OnboardingFragment : KoinFragment() {
 
     override fun onDestroy() {
         model.destroy()
-        super.onDestroy()2
+        super.onDestroy()
     }
 
     private fun createOnboardingItems() : List<OnboardingItemData> =
