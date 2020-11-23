@@ -2,8 +2,9 @@ package com.civic.navigation
 
 import androidx.fragment.app.FragmentManager
 import com.civic.R
+import com.civic.authentication.onboarding.OnboardingFragment
+import com.civic.authentication.signup.SignupFragment
 import com.civic.home.HomeFragment
-import com.civic.onboarding.OnboardingFragment
 
 class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNavigation {
 
@@ -11,6 +12,13 @@ class AppNavigator(private val supportFragmentManager: FragmentManager) : AppNav
         supportFragmentManager.beginTransaction()
             .disallowAddToBackStack()
             .add(R.id.activity_root_fragment_container, OnboardingFragment.newInstance(), OnboardingFragment.TAG)
+            .commit()
+    }
+
+    override fun showSignup() {
+        supportFragmentManager.beginTransaction()
+            .disallowAddToBackStack()
+            .replace(R.id.activity_root_fragment_container, SignupFragment.newInstance(), SignupFragment.TAG)
             .commit()
     }
 

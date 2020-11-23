@@ -1,4 +1,4 @@
-package com.civic.onboarding
+package com.civic.authentication.onboarding
 
 import android.os.Bundle
 import android.text.Spannable
@@ -11,11 +11,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.viewpager2.widget.ViewPager2
 import com.civic.R
+import com.civic.authentication.onboarding.epoxy.OnboardingEpoxyController
+import com.civic.authentication.onboarding.epoxy.OnboardingItemData
 import com.civic.common.android.HighlightableClickableSpan
 import com.civic.common.android.fragment.KoinFragment
-import com.civic.navigation.OnboardingModel
-import com.civic.onboarding.epoxy.OnboardingEpoxyController
-import com.civic.onboarding.epoxy.OnboardingItemData
+import com.civic.navigation.AppNavigation
 import com.civic.widget.ViewPagerDots
 import org.koin.core.inject
 import org.koin.core.module.Module
@@ -32,6 +32,7 @@ class OnboardingFragment : KoinFragment() {
         OnboardingModule.create()
     }
 
+    private val navigation by inject<AppNavigation>()
     private val model by inject<OnboardingModel>()
     private val controller by inject<OnboardingEpoxyController>()
 
@@ -52,7 +53,7 @@ class OnboardingFragment : KoinFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         signup.setOnClickListener {
-            model.signup()
+            navigation.showSignup()
         }
 
         login.setOnClickListener {
@@ -77,8 +78,8 @@ class OnboardingFragment : KoinFragment() {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         model.destroy()
+        super.onDestroy()2
     }
 
     private fun createOnboardingItems() : List<OnboardingItemData> =

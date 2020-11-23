@@ -1,10 +1,7 @@
 package com.civic.navigation
 
-import com.civic.arch.NullableState
 import com.civic.preferences.PreferencesConstants
 import com.civic.test.TestPreferences
-import com.civic.test.assertions.assertEquals
-import com.civic.test.assertions.assertNotNullIsA
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 

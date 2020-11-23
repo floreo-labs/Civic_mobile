@@ -1,13 +1,13 @@
 package com.civic.navigation
 
-import com.civic.arch.NullableState
+import com.civic.arch.State
 import com.civic.arch.StateModel
 import com.civic.preferences.Preferences
 import com.civic.preferences.PreferencesConstants
 import kotlinx.coroutines.flow.filterNotNull
 
 class NavigationModel(private val preferences: Preferences,
-                    private val navigationState: NullableState<NavigationData>) : StateModel() {
+                    private val navigationState: State<NavigationData?>) : StateModel() {
 
     fun initialize(hasSavedState: Boolean) {
         if (hasSavedState) return

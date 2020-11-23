@@ -4,24 +4,22 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-open class State<T>(initial: T, numValuesToCache: Int = 1) {
+class State<T>(initial: T? = null, numValuesToCache: Int = 1) {
 
     private val mutableStateFlow = MutableSharedFlow<T>(
         replay = numValuesToCache,
         onBufferOverflow = BufferOverflow.DROP_OLDEST
     ).apply {
-        tryEmit(initial)
+        initial?.let(this::tryEmit)
     }
-    private var lastValue: T = initial
 
     val flow: Flow<T> = mutableStateFlow
 
-    val value: T
-        get() = lastValue ?: mutableStateFlow.replayCache.last()
+    val value: T?
+        get() = mutableStateFlow.replayCache.lastOrNull()
 
     fun update(value: T) {
         mutableStateFlow.tryEmit(value)
-        lastValue = value
     }
 
     fun reset(nextValue: T? = null) {

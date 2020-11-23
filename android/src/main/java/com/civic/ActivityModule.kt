@@ -1,7 +1,7 @@
 package com.civic
 
 import android.app.Activity
-import com.civic.arch.NullableState
+import com.civic.arch.State
 import com.civic.home.LocationService
 import com.civic.navigation.AppNavigation
 import com.civic.navigation.AppNavigator
@@ -24,7 +24,7 @@ object ActivityModule {
         single {
             NavigationModel(
                 preferences = get(),
-                navigationState = NullableState(null)
+                navigationState = State(initial = null)
             )
         }
     }

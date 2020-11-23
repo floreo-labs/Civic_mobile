@@ -48,7 +48,7 @@ dependencies {
     implementation(project(":multiplatform:preferences"))
     implementation(project(":multiplatform:feature:home"))
     implementation(project(":multiplatform:feature:navigation"))
-    implementation(project(":multiplatform:feature:onboarding"))
+    implementation(project(":multiplatform:feature:authentication"))
 
     // KOTLIN
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.72")
@@ -65,6 +65,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:2.2.0")
     implementation("com.airbnb.android:epoxy:4.0.0-beta4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01")
+    implementation("br.com.simplepass:loading-button-android:2.2.0")
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
 

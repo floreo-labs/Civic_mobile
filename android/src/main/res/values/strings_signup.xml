@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="signup_signup_title">Let\'s Get Started</string>
+	<string name="signup_email_input_hint">Email Address</string>
+	<string name="signup_password_input_hint">Create Password</string>
+	<string name="signup_create_account_prompt">Create Account</string>
+
+</resources>

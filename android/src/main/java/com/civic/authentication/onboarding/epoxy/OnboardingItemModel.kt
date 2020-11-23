@@ -1,4 +1,4 @@
-package com.civic.onboarding.epoxy
+package com.civic.authentication.onboarding.epoxy
 
 import android.widget.ImageView
 import android.widget.TextView

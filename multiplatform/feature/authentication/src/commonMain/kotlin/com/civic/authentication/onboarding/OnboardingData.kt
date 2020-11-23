@@ -1,4 +1,4 @@
-package com.civic.navigation
+package com.civic.authentication.onboarding
 
 sealed class OnboardingData {
 

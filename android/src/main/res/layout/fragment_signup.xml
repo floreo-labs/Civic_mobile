@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+	<androidx.appcompat.widget.AppCompatTextView
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="@string/signup_signup_title"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+
+	<androidx.appcompat.widget.AppCompatEditText
+		android:id="@+id/signup_input_email"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:hint="@string/signup_email_input_hint"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<androidx.appcompat.widget.AppCompatEditText
+		android:id="@+id/signup_input_password"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium"
+		android:gravity="center"
+		android:hint="@string/signup_password_input_hint"
+		app:layout_constraintTop_toBottomOf="@id/signup_input_email"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+		android:id="@+id/signup_submit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_large"
+		android:text="@string/signup_create_account_prompt"
+		app:layout_constraintTop_toBottomOf="@+id/signup_input_password"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

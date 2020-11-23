@@ -1,4 +1,4 @@
-package com.civic.onboarding.epoxy
+package com.civic.authentication.onboarding.epoxy
 
 import com.airbnb.epoxy.TypedEpoxyController
 import com.civic.epoxy.extensions.addToController
